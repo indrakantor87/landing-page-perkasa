@@ -45,7 +45,7 @@ const features = [
 
 export default function TechFeatures() {
   return (
-    <section className="py-24 relative">
+    <section id="features" className="py-24 relative">
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] opacity-20" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

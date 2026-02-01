@@ -14,7 +14,7 @@ export default function TechNavbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/tech" className="flex items-center gap-2 group relative h-full w-[200px] md:w-[300px]">
+          <Link href="/" className="flex items-center gap-2 group relative h-full w-[200px] md:w-[300px]">
             <Image 
               src="/logo-perkasa-new.png" 
               alt="Perkasa Networks" 
