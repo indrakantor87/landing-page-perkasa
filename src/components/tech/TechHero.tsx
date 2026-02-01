@@ -162,14 +162,13 @@ export default function TechHero() {
           </button>
         </motion.div>
 
-        {/* Coverage Modal */}
-        <CoverageCheckModal 
-          isOpen={isCoverageModalOpen} 
-          onClose={() => setIsCoverageModalOpen(false)} 
-        />
-
-
       </div>
+      
+      {/* Coverage Modal */}
+      <CoverageCheckModal 
+        isOpen={isCoverageModalOpen} 
+        onClose={() => setIsCoverageModalOpen(false)} 
+      />
     </section>
   );
 }
