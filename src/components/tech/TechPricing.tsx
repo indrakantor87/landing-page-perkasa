@@ -25,7 +25,10 @@ export default function TechPricing() {
 
         {/* Package Description */}
         <div className="text-center mb-10">
-          <h3 className="text-2xl font-bold text-white mb-2">{siteConfig.packages[activeTab].title}</h3>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <HomeIcon className="w-8 h-8 text-perkasa-red" />
+            <h3 className="text-2xl font-bold text-white">{siteConfig.packages[activeTab].title}</h3>
+          </div>
           <p className="text-gray-400">{siteConfig.packages[activeTab].desc}</p>
         </div>
 
