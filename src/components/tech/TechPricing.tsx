@@ -4,7 +4,7 @@ import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { useState } from 'react';
-import { siteConfig } from '@/data/site-config';
+import { siteConfig, iconMap } from '@/data/site-config';
 
 export default function TechPricing() {
   const [activeTab, setActiveTab] = useState<'home' | 'umkm' | 'cafe' | 'school' | 'dedicated'>('home');
@@ -25,7 +25,8 @@ export default function TechPricing() {
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {Object.entries(siteConfig.packages).map(([key, pkg]) => {
-            const Icon = pkg.icon;
+            // @ts-ignore
+            const Icon = iconMap[pkg.icon] || iconMap.Home;
             const isActive = activeTab === key;
             return (
               <button
