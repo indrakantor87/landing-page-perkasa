@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Menu, X, Globe, Wifi, ChevronDown, Building2, GraduationCap, Home, Server, Coffee } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import TechNetworkStatus from './TechNetworkStatus';
 
 export default function TechNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +36,6 @@ export default function TechNavbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <TechNetworkStatus />
             
             {['Pilihan Paket', 'Keunggulan', 'Harga', 'FAQ', 'Tentang Kami', 'Kontak'].map((item) => {
               if (item === 'Pilihan Paket') {
