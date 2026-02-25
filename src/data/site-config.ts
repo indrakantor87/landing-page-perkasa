@@ -157,7 +157,9 @@ export const siteConfig = {
     {
       question: 'Apakah ada batasan kuota (FUP)?',
       answer: 'TIDAK ADA. Semua paket internet Perkasa Networks adalah TRUE UNLIMITED tanpa batasan kuota (FUP). Anda bebas download/upload sepuasnya.',
-    },
+    }
+  ],
+
   // 5. HERO SLIDESHOW
   hero: {
     badge: 'Fiber Optic Berkecepatan Tinggi',

@@ -118,7 +118,7 @@ export default function TechHero() {
 
           {/* Slideshow Indicators */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-            {slides.map((_, index) => (
+            {siteConfig.hero.slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
