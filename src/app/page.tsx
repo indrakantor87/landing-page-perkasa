@@ -12,7 +12,6 @@ const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'));
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
-const ClientSpeedTestWrapper = dynamic(() => import('@/components/tech/ClientSpeedTestWrapper'));
 
 export const metadata = {
   title: 'Perkasa Networks | Connect Your Future',
@@ -48,7 +47,6 @@ export default function Home() {
         <TechFooter />
       </div>
       <WhatsAppButton />
-      <ClientSpeedTestWrapper />
     </main>
   );
 }
