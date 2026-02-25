@@ -1,5 +1,14 @@
 import { Home, Building2, GraduationCap, Server, Coffee } from 'lucide-react';
 
+// Icon mapping for client components
+export const iconMap = {
+  Home,
+  Building2,
+  GraduationCap,
+  Server,
+  Coffee
+};
+
 export const siteConfig = {
   // 1. ANNOUNCEMENT BAR (Top Bar)
   announcement: {
@@ -14,7 +23,7 @@ export const siteConfig = {
     home: {
       title: 'Paket Home',
       desc: 'Internet rumah ultra-cepat untuk keluarga',
-      icon: Home,
+      icon: 'Home',
       plans: [
         { 
           name: 'HOME LITE', 
@@ -58,7 +67,7 @@ export const siteConfig = {
     umkm: {
       title: 'Paket UMKM',
       desc: 'Solusi bisnis berkembang dengan koneksi stabil',
-      icon: Building2,
+      icon: 'Building2',
       plans: [
         { name: 'UMKM STARTER', speed: '20 Mbps', price: '250.000', features: ['Cocok untuk Warung/Cafe Kecil', 'Support POS System', 'IP Dynamic Public'] },
         { name: 'UMKM BUSINESS', speed: '50 Mbps', price: '450.000', features: ['Cocok untuk Kantor Kecil (10 Staff)', 'Prioritas Traffic Bisnis', 'Support CCTV Online'], popular: true },
@@ -68,7 +77,7 @@ export const siteConfig = {
     cafe: {
       title: 'Paket Cafe',
       desc: 'WiFi kencang untuk kenyamanan pelanggan cafe & resto',
-      icon: Coffee,
+      icon: 'Coffee',
       plans: [
         { name: 'CAFE STARTER', speed: '30 Mbps', price: '300.000', features: ['Cocok untuk Coffee Shop Kecil', 'Landing Page Login Support', 'Limit Bandwidth per User'] },
         { name: 'CAFE HANGOUT', speed: '75 Mbps', price: '550.000', features: ['Cocok untuk Cafe Ramai (50+ User)', 'Voucher WiFi System Support', 'Prioritas Gaming Mobile'], popular: true },
@@ -78,7 +87,7 @@ export const siteConfig = {
     school: {
       title: 'Paket Sekolah',
       desc: 'Koneksi edukasi stabil untuk pembelajaran digital',
-      icon: GraduationCap,
+      icon: 'GraduationCap',
       plans: [
         { name: 'EDUNET BASIC', speed: '50 Mbps', price: 'Call Us', features: ['Akses E-Learning Cepat', 'Filter Konten Negatif', 'Support ANBK'] },
         { name: 'EDUNET PRO', speed: '100 Mbps', price: 'Call Us', features: ['Lab Komputer Ready', 'Ujian Online Stabil', 'Prioritas Akses Edukasi'], popular: true },
@@ -88,7 +97,7 @@ export const siteConfig = {
     dedicated: {
       title: 'Paket Dedicated',
       desc: 'Bandwidth prioritas 1:1 untuk performa maksimal',
-      icon: Server,
+      icon: 'Server',
       plans: [
         { name: 'CORP LITE', speed: '10 Mbps', price: 'Call Us', features: ['Bandwidth 1:1 (Simetris)', 'SLA 99.5%', 'IP Public Static /29', '24/7 Priority Support'] },
         { name: 'CORP STANDARD', speed: '20 Mbps', price: 'Call Us', features: ['Bandwidth 1:1 (Simetris)', 'SLA 99.8%', 'IP Public Static /29', 'MRTG Monitoring'], popular: true },

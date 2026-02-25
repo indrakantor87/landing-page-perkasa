@@ -49,7 +49,7 @@ export default async function PackagePage({ params }: { params: { slug: string }
 
       <div className="relative z-10">
         <TechNavbar />
-        <PackageHero title={pkg.title} description={pkg.desc} Icon={pkg.icon} />
+        <PackageHero title={pkg.title} description={pkg.desc} iconName={pkg.icon} />
         <PackageContent plans={pkg.plans} title={pkg.title} />
         <TechFooter />
       </div>

@@ -1,15 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { LucideIcon } from 'lucide-react';
+import { iconMap } from '@/data/site-config';
 
 interface PackageHeroProps {
   title: string;
   description: string;
-  Icon: LucideIcon;
+  iconName: string;
 }
 
-export default function PackageHero({ title, description, Icon }: PackageHeroProps) {
+export default function PackageHero({ title, description, iconName }: PackageHeroProps) {
+  // @ts-ignore
+  const Icon = iconMap[iconName] || iconMap.Home; // Default to Home if not found
+
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
