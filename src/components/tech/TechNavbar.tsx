@@ -11,11 +11,11 @@ export default function TechNavbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const packages = [
-    { name: 'Paket Home', icon: Home, desc: 'Internet rumah ultra-cepat', href: '#home-package' },
-    { name: 'Paket UMKM', icon: Building2, desc: 'Solusi bisnis berkembang', href: '#umkm-package' },
-    { name: 'Paket Sekolah', icon: GraduationCap, desc: 'Koneksi edukasi stabil', href: '#school-package' },
-    { name: 'Paket Dedicated', icon: Server, desc: 'Bandwidth prioritas 1:1', href: '#dedicated-package' },
-    { name: 'Paket Cafe', icon: Coffee, desc: 'WiFi kencang untuk pelanggan', href: '#cafe-package' },
+    { name: 'Paket Home', icon: Home, desc: 'Internet rumah ultra-cepat', href: '/packages/home' },
+    { name: 'Paket UMKM', icon: Building2, desc: 'Solusi bisnis berkembang', href: '/packages/umkm' },
+    { name: 'Paket Sekolah', icon: GraduationCap, desc: 'Koneksi edukasi stabil', href: '/packages/school' },
+    { name: 'Paket Dedicated', icon: Server, desc: 'Bandwidth prioritas 1:1', href: '/packages/dedicated' },
+    { name: 'Paket Cafe', icon: Coffee, desc: 'WiFi kencang untuk pelanggan', href: '/packages/cafe' },
   ];
 
   return (
