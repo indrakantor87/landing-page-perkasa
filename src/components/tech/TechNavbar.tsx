@@ -39,61 +39,67 @@ export default function TechNavbar() {
           <div className="hidden md:flex items-center gap-8">
             <TechNetworkStatus />
             
-            {/* Dropdown Pilihan Paket */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => setActiveDropdown('paket')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white transition-colors group-hover:text-perkasa-red py-4">
-                Pilihan Paket
-                <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === 'paket' ? 'rotate-180' : ''}`} />
-              </button>
-              
-              <AnimatePresence>
-                {activeDropdown === 'paket' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-[#0B0F19] border border-white/10 rounded-xl shadow-2xl shadow-black/50 overflow-hidden p-4 grid grid-cols-2 gap-2 z-50"
+            {['Pilihan Paket', 'Keunggulan', 'Harga', 'FAQ', 'Tentang Kami', 'Kontak'].map((item) => {
+              if (item === 'Pilihan Paket') {
+                return (
+                  <div 
+                    key={item}
+                    className="relative group"
+                    onMouseEnter={() => setActiveDropdown('paket')}
+                    onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    {packages.map((pkg) => (
-                      <Link 
-                        key={pkg.name} 
-                        href={pkg.href}
-                        className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors group/item"
-                      >
-                        <div className="p-2 rounded-lg bg-perkasa-red/10 text-perkasa-red group-hover/item:bg-perkasa-red group-hover/item:text-white transition-colors">
-                          <pkg.icon size={20} />
-                        </div>
-                        <div>
-                          <div className="text-sm font-bold text-white group-hover/item:text-perkasa-red transition-colors">{pkg.name}</div>
-                          <div className="text-xs text-gray-400 mt-0.5">{pkg.desc}</div>
-                        </div>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                    <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white transition-colors group-hover:text-perkasa-red py-4">
+                      {item}
+                      <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === 'paket' ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {activeDropdown === 'paket' && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-[#0B0F19] border border-white/10 rounded-xl shadow-2xl shadow-black/50 overflow-hidden p-4 grid grid-cols-2 gap-2 z-50"
+                        >
+                          {packages.map((pkg) => (
+                            <Link 
+                              key={pkg.name} 
+                              href={pkg.href}
+                              className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors group/item"
+                            >
+                              <div className="p-2 rounded-lg bg-perkasa-red/10 text-perkasa-red group-hover/item:bg-perkasa-red group-hover/item:text-white transition-colors">
+                                <pkg.icon size={20} />
+                              </div>
+                              <div>
+                                <div className="text-sm font-bold text-white group-hover/item:text-perkasa-red transition-colors">{pkg.name}</div>
+                                <div className="text-xs text-gray-400 mt-0.5">{pkg.desc}</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
 
-            {['Tentang Kami', 'Keunggulan', 'Harga', 'FAQ', 'Kontak'].map((item) => (
-              <Link
-                key={item}
-                href={item === 'Tentang Kami' ? '/about' : `/#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
-                className="relative group"
-              >
-                <motion.span 
-                  className="inline-block text-sm font-medium text-gray-300 transition-all duration-300 group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-                  whileHover={{ scale: 1.1 }}
+              return (
+                <Link
+                  key={item}
+                  href={item === 'Tentang Kami' ? '/about' : `/#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
+                  className="relative group"
                 >
-                  {item}
-                </motion.span>
-                <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-perkasa-red transition-all group-hover:w-full group-hover:left-0" />
-              </Link>
-            ))}
+                  <motion.span 
+                    className="inline-block text-sm font-medium text-gray-300 transition-all duration-300 group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {item}
+                  </motion.span>
+                  <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-perkasa-red transition-all group-hover:w-full group-hover:left-0" />
+                </Link>
+              );
+            })}
             
             <Link 
               href="#upgrade"
