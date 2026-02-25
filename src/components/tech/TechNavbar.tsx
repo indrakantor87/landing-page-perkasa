@@ -79,10 +79,10 @@ export default function TechNavbar() {
               </AnimatePresence>
             </div>
 
-            {['Keunggulan', 'Harga', 'FAQ', 'Kontak'].map((item) => (
+            {['Tentang Kami', 'Keunggulan', 'Harga', 'FAQ', 'Kontak'].map((item) => (
               <Link
                 key={item}
-                href={`#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
+                href={item === 'Tentang Kami' ? '/about' : `/#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
                 className="relative group"
               >
                 <motion.span 
@@ -140,10 +140,10 @@ export default function TechNavbar() {
                 </div>
               </div>
 
-              {['Keunggulan', 'Harga', 'FAQ', 'Kontak'].map((item) => (
+              {['Tentang Kami', 'Keunggulan', 'Harga', 'FAQ', 'Kontak'].map((item) => (
                 <Link
                   key={item}
-                  href={`#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
+                  href={item === 'Tentang Kami' ? '/about' : `/#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
                   onClick={() => setIsOpen(false)}
                   className="block text-lg font-medium text-gray-300 hover:text-perkasa-red transition-colors px-2"
                 >

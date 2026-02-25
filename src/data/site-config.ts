@@ -175,5 +175,29 @@ export const siteConfig = {
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop", // Speed/Light
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop"  // Cybersecurity/Tech
     ]
+  },
+
+  // 6. COMPANY PROFILE
+  company: {
+    name: 'PT Perkasa Networks Indonesia',
+    shortName: 'Perkasa Networks',
+    foundedYear: 2020,
+    customers: '5000+',
+    address: 'Perumahan Kebun Bibit Buah Blok A No 1, Sidokerto, Pati, Jawa Tengah 59111',
+    mapsUrl: 'https://maps.google.com/?q=Perumahan+Kebun+Bibit+Buah+Blok+A+No+1+Sidokerto+Pati',
+    email: 'info@perkasanetworks.co.id',
+    phone: '+62 812-5200-0220',
+    description: 'Perkasa Networks adalah penyedia layanan internet (ISP) berbasis Fiber Optic yang berkomitmen menghadirkan konektivitas stabil, cepat, dan terjangkau untuk masyarakat Indonesia. Kami hadir untuk mendukung transformasi digital mulai dari rumah, sekolah, hingga sektor bisnis.',
+    vision: 'Menjadi ISP pilihan utama yang menghubungkan seluruh pelosok negeri dengan internet berkualitas.',
+    mission: [
+      'Menyediakan infrastruktur Fiber Optic yang handal dan luas.',
+      'Memberikan pelayanan pelanggan yang responsif dan solutif.',
+      'Menghadirkan inovasi teknologi internet terbaru dengan harga kompetitif.',
+      'Mendukung pertumbuhan ekonomi digital UMKM dan pendidikan.'
+    ],
+    licenses: [
+      'Izin Penyelenggaraan Jasa Akses Internet (ISP) No. XX/Kominfo/2020',
+      'Anggota APJII (Asosiasi Penyelenggara Jasa Internet Indonesia)'
+    ]
   }
 };
