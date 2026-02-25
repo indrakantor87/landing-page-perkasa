@@ -12,13 +12,15 @@ const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'))
 
 // Helper to get package data
 const getPackageData = (slug: string) => {
+  if (!slug) return null;
   const packageKey = slug.toLowerCase();
   // @ts-ignore
   return siteConfig.packages[packageKey];
 };
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const pkg = getPackageData(params.slug);
+  const { slug } = await Promise.resolve(params); // Ensure params are resolved
+  const pkg = getPackageData(slug);
   
   if (!pkg) {
     return {
@@ -32,8 +34,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function PackagePage({ params }: { params: { slug: string } }) {
-  const pkg = getPackageData(params.slug);
+export default async function PackagePage({ params }: { params: { slug: string } }) {
+  const { slug } = await Promise.resolve(params); // Ensure params are resolved
+  const pkg = getPackageData(slug);
 
   if (!pkg) {
     notFound();
