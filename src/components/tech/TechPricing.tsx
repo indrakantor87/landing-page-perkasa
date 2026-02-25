@@ -93,10 +93,7 @@ export default function TechPricing() {
                     : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
                 )}
               >
-                <div className="flex items-center justify-center gap-2">
-                  <HomeIcon size={18} />
-                  Pilih Paket
-                </div>
+                Pilih Paket
               </a>
             </motion.div>
           ))}
