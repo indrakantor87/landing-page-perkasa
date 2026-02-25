@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { siteConfig, iconMap } from '@/data/site-config';
 
 export default function TechPricing() {
-  const [activeTab, setActiveTab] = useState<'home' | 'umkm' | 'cafe' | 'school' | 'dedicated'>('home');
+  const activeTab = 'home'; // Force only 'home' package
 
   return (
     <section id="pricing" className="py-24 relative overflow-hidden bg-[#0B0F19]">
@@ -20,30 +20,6 @@ export default function TechPricing() {
             Pilih Paket <span className="text-perkasa-red">Sesuai Kebutuhan</span>
           </h2>
           <p className="text-gray-400 text-lg">Solusi internet terbaik untuk rumah, bisnis, hingga korporasi.</p>
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {Object.entries(siteConfig.packages).map(([key, pkg]) => {
-            // @ts-ignore
-            const Icon = iconMap[pkg.icon] || iconMap.Home;
-            const isActive = activeTab === key;
-            return (
-              <button
-                key={key}
-                onClick={() => setActiveTab(key as any)}
-                className={clsx(
-                  'flex items-center gap-2 px-6 py-3 rounded-full border transition-all duration-300',
-                  isActive 
-                    ? 'bg-perkasa-red border-perkasa-red text-white shadow-lg shadow-red-900/40 scale-105' 
-                    : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
-                )}
-              >
-                <Icon size={18} />
-                <span className="font-bold uppercase tracking-wide text-sm">{pkg.title}</span>
-              </button>
-            );
-          })}
         </div>
 
         {/* Package Description */}
