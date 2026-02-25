@@ -8,6 +8,7 @@ import { siteConfig, iconMap } from '@/data/site-config';
 
 export default function TechPricing() {
   const activeTab = 'home'; // Force only 'home' package
+  const HomeIcon = iconMap.Home;
 
   return (
     <section id="pricing" className="py-24 relative overflow-hidden bg-[#0B0F19]">
@@ -89,7 +90,10 @@ export default function TechPricing() {
                     : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
                 )}
               >
-                Pilih Paket
+                <div className="flex items-center justify-center gap-2">
+                  <HomeIcon size={18} />
+                  Pilih Paket
+                </div>
               </a>
             </motion.div>
           ))}
