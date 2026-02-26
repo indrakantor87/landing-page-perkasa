@@ -19,7 +19,7 @@ export default function AboutHero() {
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Tentang <span className="text-perkasa-red">Kami</span>
           </h1>
-          <div className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed space-y-6">
+          <div className="text-xl text-white max-w-3xl mx-auto leading-relaxed space-y-6">
             {(Array.isArray(siteConfig.company.description) 
               ? siteConfig.company.description 
               : [siteConfig.company.description]

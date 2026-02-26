@@ -34,7 +34,7 @@ export default function TechHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/20 border border-white/10 backdrop-blur-sm mb-8"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
@@ -96,7 +96,7 @@ export default function TechHero() {
                 quality={85}
               />
               {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
             </motion.div>
           </AnimatePresence>
           
@@ -134,9 +134,9 @@ export default function TechHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-xl text-gray-200 max-w-2xl mb-12 leading-relaxed font-medium"
+          className="text-xl text-white max-w-2xl mb-12 leading-relaxed font-medium drop-shadow-sm"
         >
-          <span className="font-bold"><span className="text-perkasa-red">#</span><span className="text-perkasa-blue">juaranya</span><span className="text-perkasa-red">wifi</span></span> - Rasakan <span className="text-white font-bold">masa depan</span> internet dengan <span className="text-perkasa-red font-bold">Perkasa Networks</span>. <span className="text-white">Latensi rendah</span>, <span className="text-perkasa-blue font-bold">kecepatan simetris</span>, dan <span className="text-perkasa-red font-bold">enkripsi tingkat militer</span> untuk elit digital.
+          <span className="font-bold"><span className="text-perkasa-red drop-shadow-md">#</span><span className="text-perkasa-blue drop-shadow-md">juaranya</span><span className="text-perkasa-red drop-shadow-md">wifi</span></span> - Rasakan <span className="text-white font-bold drop-shadow-md">masa depan</span> internet dengan <span className="text-perkasa-red font-bold drop-shadow-md">Perkasa Networks</span>. Latensi rendah, <span className="text-perkasa-blue font-bold drop-shadow-md">kecepatan simetris</span>, dan <span className="text-perkasa-red font-bold drop-shadow-md">enkripsi tingkat militer</span> untuk elit digital.
         </motion.p>
 
         <motion.div

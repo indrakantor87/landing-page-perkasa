@@ -7,16 +7,16 @@ import PopupBanner from '@/components/tech/PopupBanner';
 
 // Dynamic imports for below-fold components with loading skeletons
 const TechFeatures = dynamic(() => import('@/components/tech/TechFeatures'), {
-  loading: () => <div className="h-[600px] w-full bg-[#0B0F19] animate-pulse" />
+  loading: () => <div className="h-[600px] w-full bg-white/5 animate-pulse" />
 });
 const TechPricing = dynamic(() => import('@/components/tech/TechPricing'), {
-  loading: () => <div className="h-[800px] w-full bg-[#0B0F19] animate-pulse" />
+  loading: () => <div className="h-[800px] w-full bg-white/5 animate-pulse" />
 });
 const TechTestimonials = dynamic(() => import('@/components/tech/TechTestimonials'), {
-  loading: () => <div className="h-[400px] w-full bg-[#0B0F19] animate-pulse" />
+  loading: () => <div className="h-[400px] w-full bg-white/5 animate-pulse" />
 });
 const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'), {
-  loading: () => <div className="h-[500px] w-full bg-[#0B0F19] animate-pulse" />
+  loading: () => <div className="h-[500px] w-full bg-white/5 animate-pulse" />
 });
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));

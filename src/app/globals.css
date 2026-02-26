@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0B0F19;
+  --background: transparent;
   --foreground: #ffffff;
   scroll-behavior: smooth;
   --color-perkasa-red: #E62020;
@@ -27,7 +27,7 @@
 body {
   /* Option 2: Soft Blue/Sky (Clean & Trustworthy) - MATCHING USER REQUEST (66FFFF/99FFFF vibe) */
   background-color: #020617; /* Fallback */
-  background-image: url('/main-bg.webp') !important;
+  background-image: url('/main-bg4.jpg') !important;
   background-attachment: fixed !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;

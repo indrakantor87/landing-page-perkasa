@@ -60,10 +60,10 @@ export default function TechFeatures() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Dirancang untuk <span className="text-perkasa-red">Performa</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-md">
+            Dirancang untuk <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">Performa</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-white max-w-2xl mx-auto text-lg drop-shadow-md font-medium">
             Infrastruktur kami dibangun dengan teknologi fiber optic generasi terbaru untuk memberikan koneksi paling andal.
           </p>
         </div>
@@ -87,11 +87,11 @@ export default function TechFeatures() {
                   feature.border
                 )}
               >
-                <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <feature.icon className={clsx('w-6 h-6', feature.color)} />
+                <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-white/5">
+                  <feature.icon className={clsx('w-8 h-8', feature.color)} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 drop-shadow-md">{feature.title}</h3>
-                <p className="text-gray-200 leading-relaxed font-medium drop-shadow-sm">{feature.description}</p>
+                <p className="text-white leading-relaxed font-medium drop-shadow-sm">{feature.description}</p>
               </Component>
             );
           })}

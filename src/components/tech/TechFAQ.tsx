@@ -16,7 +16,7 @@ export default function TechFAQ() {
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-md">
             Pertanyaan <span className="text-perkasa-red">Umum</span>
           </h2>
-          <p className="text-gray-200 text-lg drop-shadow-sm font-medium">Jawaban untuk hal-hal yang sering ditanyakan</p>
+          <p className="text-white text-lg drop-shadow-sm font-medium">Jawaban untuk hal-hal yang sering ditanyakan</p>
         </div>
 
         <div className="space-y-4">
@@ -33,10 +33,10 @@ export default function TechFAQ() {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
               >
-                <span className={clsx("text-lg font-medium transition-colors drop-shadow-sm", openIndex === index ? "text-[#00B4D8]" : "text-gray-100")}>
+                <span className={clsx("text-lg font-medium transition-colors drop-shadow-sm", openIndex === index ? "text-[#00B4D8]" : "text-white")}>
                   {faq.question}
                 </span>
-                <span className={clsx("p-2 rounded-full bg-white/5 transition-colors", openIndex === index ? "text-[#00B4D8] bg-[#00B4D8]/10" : "text-gray-400")}>
+                <span className={clsx("p-2 rounded-full bg-white/5 transition-colors", openIndex === index ? "text-[#00B4D8] bg-[#00B4D8]/10" : "text-white")}>
                   {openIndex === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                 </span>
               </button>
@@ -49,7 +49,7 @@ export default function TechFAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-6 pb-6 text-gray-200 leading-relaxed font-medium drop-shadow-sm">
+                    <div className="px-6 pb-6 text-white leading-relaxed font-medium drop-shadow-sm">
                       {faq.answer}
                     </div>
                   </motion.div>

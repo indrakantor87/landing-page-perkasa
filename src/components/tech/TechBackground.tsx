@@ -6,7 +6,7 @@ export default function TechBackground() {
   return (
     <div className="fixed inset-0 z-0">
       <Image
-        src="/background-web.jpg"
+        src="/main-bg4.jpg"
         alt="Circuit Background"
         fill
         className="object-cover opacity-50"
@@ -14,7 +14,7 @@ export default function TechBackground() {
         sizes="100vw"
         quality={60}
       />
-      <div className="absolute inset-0 bg-[#0B0F19]/80 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
     </div>
   );
 }

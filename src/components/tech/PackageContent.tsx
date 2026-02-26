@@ -46,7 +46,7 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
               </h3>
               
               <div className="mb-6">
-                <span className="text-4xl font-bold text-perkasa-blue">{plan.speed}</span>
+                <span className="text-4xl font-bold text-white">{plan.speed}</span>
               </div>
 
               <div className="flex items-baseline gap-1 mb-8 pb-8 border-b border-white/10">
@@ -54,16 +54,16 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
                    <span className="text-2xl font-bold text-white drop-shadow-md">Hubungi Kami</span>
                 ) : (
                   <>
-                    <span className="text-sm text-gray-200 font-medium">Rp</span>
+                    <span className="text-sm text-white font-medium">Rp</span>
                     <span className="text-3xl font-bold text-white drop-shadow-md">{plan.price}</span>
-                    <span className="text-sm text-gray-200 font-medium">/bln</span>
+                    <span className="text-sm text-white font-medium">/bln</span>
                   </>
                 )}
               </div>
 
               <ul className="space-y-4 mb-8 flex-1">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-gray-100 font-medium text-sm drop-shadow-sm">
+                  <li key={feature} className="flex items-start gap-3 text-white font-medium text-sm drop-shadow-sm">
                     <Check className="w-5 h-5 text-[#00B4D8] shrink-0 mt-0.5 drop-shadow-[0_0_10px_rgba(0,180,216,0.5)]" />
                     <span>{feature}</span>
                   </li>
@@ -88,7 +88,7 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
         </div>
 
         <div className="mt-12 text-center">
-            <p className="text-gray-500 text-sm max-w-2xl mx-auto">
+            <p className="text-white text-sm max-w-2xl mx-auto font-medium drop-shadow-sm">
               *Harga sudah termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih.
               Ketersediaan jaringan fiber optic bergantung pada lokasi.
             </p>

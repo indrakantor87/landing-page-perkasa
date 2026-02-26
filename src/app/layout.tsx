@@ -40,7 +40,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
         style={{
-          backgroundImage: "url('/main-bg.webp')",
+          backgroundImage: "url('/main-bg4.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -48,7 +48,7 @@ export default function RootLayout({
           backgroundColor: '#020617'
         }}
       >
-        <div className="fixed inset-0 bg-black/50 z-[-1] pointer-events-none" />
+        <div className="fixed inset-0 bg-black/10 z-[-1] pointer-events-none" />
         {children}
       </body>
     </html>
