@@ -43,8 +43,13 @@ export default function PopupBanner() {
       className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
       role="dialog"
       aria-modal="true"
+      onClick={close}
+      onKeyDown={(e) => e.key === 'Escape' && close()}
     >
-      <div className="relative w-full max-w-[880px] bg-[#0B0F19] rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
+      <div
+        className="relative w-full max-w-[600px] bg-[#0B0F19] rounded-2xl shadow-2xl border border-white/10 overflow-hidden flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           aria-label="Tutup"
           onClick={close}
@@ -53,20 +58,20 @@ export default function PopupBanner() {
           <X size={18} />
         </button>
 
-        {/* Image wrapper keeps aspect ratio and responsiveness */}
-        <div className="relative w-full h-auto">
-          {/* Next/Image requires URL encoding for spaces in public filenames */}
+        {/* Image wrapper - No scroll, ensure full visibility */}
+        <div className="relative w-full flex-1 min-h-0 flex items-center justify-center bg-black/20">
           <Image
             src={'/pop%20up%20banner.jpeg'}
             alt="Promo Perkasa Networks"
-            width={1600}
-            height={900}
-            className="w-full h-auto object-contain"
+            width={1200}
+            height={1600}
+            className="w-full h-auto max-h-[70vh] object-contain"
+            sizes="(max-width: 640px) 90vw, 600px"
             priority
           />
         </div>
 
-        <div className="flex items-center justify-end gap-3 px-4 py-3 bg-black/30">
+        <div className="flex items-center justify-end gap-3 px-4 py-3 bg-black/30 shrink-0">
           <button
             onClick={close}
             className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 text-sm font-medium"
@@ -78,4 +83,3 @@ export default function PopupBanner() {
     </div>
   );
 }
-
