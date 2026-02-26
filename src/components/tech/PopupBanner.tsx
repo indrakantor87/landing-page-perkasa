@@ -3,83 +3,66 @@
 import { X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-
-const STORAGE_KEY = 'perkasa_popup_banner_dismissed_at';
-const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function PopupBanner() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const ts = Number(raw);
-        if (!Number.isNaN(ts) && Date.now() - ts < ONE_DAY_MS) {
-          return; // recently dismissed
-        }
-      }
-      const timer = setTimeout(() => setOpen(true), 800);
-      return () => clearTimeout(timer);
-    } catch {
-      // ignore storage errors
-      setOpen(true);
-    }
+    const timer = setTimeout(() => setOpen(true), 600);
+    return () => clearTimeout(timer);
   }, []);
 
   const close = () => {
-    try {
-      localStorage.setItem(STORAGE_KEY, String(Date.now()));
-    } catch {
-      // ignore
-    }
     setOpen(false);
   };
 
   if (!open) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
-      role="dialog"
-      aria-modal="true"
-      onClick={close}
-      onKeyDown={(e) => e.key === 'Escape' && close()}
-    >
-      <div
-        className="relative w-full max-w-[600px] bg-[#0B0F19] rounded-2xl shadow-2xl border border-white/10 overflow-hidden flex flex-col"
-        onClick={(e) => e.stopPropagation()}
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70 backdrop-blur-md p-4"
+        role="dialog"
+        aria-modal="true"
+        onClick={close}
+        onKeyDown={(e) => e.key === 'Escape' && close()}
       >
-        <button
-          aria-label="Tutup"
-          onClick={close}
-          className="absolute right-3 top-3 z-10 inline-flex items-center justify-center rounded-full p-2 bg-black/40 text-white hover:bg-black/60 transition"
+        <motion.div
+          initial={{ opacity: 0, y: 12, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 12, scale: 0.96 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          className="relative w-full max-w-[560px] rounded-[28px] shadow-[0_25px_80px_rgba(0,0,0,0.6)] ring-1 ring-white/10 overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
         >
-          <X size={18} />
-        </button>
-
-        {/* Image wrapper - No scroll, ensure full visibility */}
-        <div className="relative w-full flex-1 min-h-0 flex items-center justify-center bg-black/20">
-          <Image
-            src={'/pop%20up%20banner.jpeg'}
-            alt="Promo Perkasa Networks"
-            width={1200}
-            height={1600}
-            className="w-full h-auto max-h-[70vh] object-contain"
-            sizes="(max-width: 640px) 90vw, 600px"
-            priority
-          />
-        </div>
-
-        <div className="flex items-center justify-end gap-3 px-4 py-3 bg-black/30 shrink-0">
           <button
+            aria-label="Tutup"
             onClick={close}
-            className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 text-sm font-medium"
+            className="absolute right-3 top-3 z-10 inline-flex items-center justify-center rounded-full p-2 bg-black/50 text-white hover:bg-black/70 transition"
           >
-            Tutup
+            <X size={18} />
           </button>
-        </div>
-      </div>
-    </div>
+
+          {/* Image wrapper - clean, no scroll */}
+          <div className="relative w-full bg-gradient-to-b from-white/5 to-transparent">
+            <Image
+              src={'/pop%20up%20banner.jpeg'}
+              alt="Promo Perkasa Networks"
+              width={1120}
+              height={1792}
+              className="w-full h-auto max-h-[78vh] object-contain"
+              sizes="(max-width: 640px) 90vw, 560px"
+              priority
+            />
+          </div>
+
+          {/* No bottom button for a cleaner look */}
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 }

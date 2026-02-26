@@ -19,7 +19,7 @@ export default function TechNavbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/80 backdrop-blur-lg border-b border-white/5 shadow-lg shadow-black/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -37,7 +37,7 @@ export default function TechNavbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             
-            {['Pilihan Paket', 'Keunggulan', 'Harga', 'FAQ', 'Tentang Kami', 'Kontak'].map((item) => {
+            {['Beranda', 'Tentang Kami', 'Pilihan Paket', 'FAQ', 'Kontak'].map((item) => {
               if (item === 'Pilihan Paket') {
                 return (
                   <div 
@@ -58,7 +58,7 @@ export default function TechNavbar() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-[#0B0F19] border border-white/10 rounded-xl shadow-2xl shadow-black/50 overflow-hidden p-4 grid grid-cols-2 gap-2 z-50"
+                          className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-[#0F172A]/95 border border-white/10 rounded-xl shadow-2xl shadow-black/50 overflow-hidden p-4 grid grid-cols-2 gap-2 z-50 backdrop-blur-xl"
                         >
                           {packages.map((pkg) => (
                             <Link 
@@ -85,7 +85,11 @@ export default function TechNavbar() {
               return (
                 <Link
                   key={item}
-                  href={item === 'Tentang Kami' ? '/about' : `/#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
+                  href={
+                    item === 'Beranda' ? '/' : 
+                    item === 'Tentang Kami' ? '/about' : 
+                    `/#${item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`
+                  }
                   className="relative group"
                 >
                   <motion.span 

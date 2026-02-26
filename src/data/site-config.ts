@@ -66,42 +66,44 @@ export const siteConfig = {
     },
     umkm: {
       title: 'Paket UMKM',
-      desc: 'Solusi bisnis berkembang dengan koneksi stabil',
+      desc: 'Kembangkan Bisnis Anda Berama Kami',
       icon: 'Building2',
       plans: [
-        { name: 'UMKM STARTER', speed: '20 Mbps', price: '250.000', features: ['Cocok untuk Warung/Cafe Kecil', 'Support POS System', 'IP Dynamic Public'] },
-        { name: 'UMKM BUSINESS', speed: '50 Mbps', price: '450.000', features: ['Cocok untuk Kantor Kecil (10 Staff)', 'Prioritas Traffic Bisnis', 'Support CCTV Online'], popular: true },
-        { name: 'UMKM PRO', speed: '100 Mbps', price: '750.000', features: ['Cocok untuk Cafe Ramai/Co-working', 'High Concurrent Users', 'Bandwidth Management Support'] },
+        { name: 'BASIC', speed: '50 Mbps', price: '600.000', features: ['+ 1 Router Paralel', 'Cocok untuk Usaha Kecil'] },
+        { name: 'SMALL', speed: '100 Mbps', price: '900.000', features: ['+ 1 Router Paralel', 'Cocok untuk Ruko/Kantor'] },
+        { name: 'MEDIUM', speed: '150 Mbps', price: '1.300.000', features: ['+ 2 Router Paralel', 'Cocok untuk Bisnis Menengah'], popular: true },
+        { name: 'ADVAN', speed: '200 Mbps', price: '1.600.000', features: ['+ 2 Router Paralel', 'Cocok untuk Kantor Besar'] },
       ]
     },
     cafe: {
       title: 'Paket Cafe',
-      desc: 'WiFi kencang untuk kenyamanan pelanggan cafe & resto',
+      desc: 'Maksimalkan Bisnis Cafe Anda Dengan Koneksi Stabil',
       icon: 'Coffee',
       plans: [
-        { name: 'CAFE STARTER', speed: '30 Mbps', price: '300.000', features: ['Cocok untuk Coffee Shop Kecil', 'Landing Page Login Support', 'Limit Bandwidth per User'] },
-        { name: 'CAFE HANGOUT', speed: '75 Mbps', price: '550.000', features: ['Cocok untuk Cafe Ramai (50+ User)', 'Voucher WiFi System Support', 'Prioritas Gaming Mobile'], popular: true },
-        { name: 'CAFE PREMIUM', speed: '150 Mbps', price: '900.000', features: ['Cocok untuk Resto Besar/Lounge', 'Dedicated IP Public', 'Mikrotik Management Support'] },
+        { name: 'LITE', speed: '50 Mbps', price: '555.000', features: ['Koneksi Office Up To 50 Mbps', 'Koneksi Free WiFi Up To 100 Mbps'] },
+        { name: 'BASIC', speed: '75 Mbps', price: '888.000', features: ['Koneksi Office Up To 75 Mbps', 'Koneksi Free WiFi Up To 150 Mbps'], popular: true },
+        { name: 'ADVANCED', speed: '100 Mbps', price: '1.110.000', features: ['Koneksi Office Up To 100 Mbps', 'Koneksi Free WiFi Up To 200 Mbps'] },
       ]
     },
     school: {
       title: 'Paket Sekolah',
-      desc: 'Koneksi edukasi stabil untuk pembelajaran digital',
+      desc: 'Menggapai Masa Depan Bersama Kami',
       icon: 'GraduationCap',
       plans: [
-        { name: 'EDUNET BASIC', speed: '50 Mbps', price: 'Call Us', features: ['Akses E-Learning Cepat', 'Filter Konten Negatif', 'Support ANBK'] },
-        { name: 'EDUNET PRO', speed: '100 Mbps', price: 'Call Us', features: ['Lab Komputer Ready', 'Ujian Online Stabil', 'Prioritas Akses Edukasi'], popular: true },
-        { name: 'EDUNET MAX', speed: '200+ Mbps', price: 'Call Us', features: ['Full Campus Coverage', 'Dedicated Bandwidth Option', 'SLA Jaminan Koneksi'] },
+        { name: 'Educate 50', speed: '50 Mbps', price: '2.500.000', features: ['Koneksi stabil dan cepat', 'Prioritas traffic untuk pendidikan'] },
+        { name: 'Educate 100', speed: '100 Mbps', price: '3.500.000', features: ['Static IP Address', 'Dukungan teknis prioritas (SLA)', '1 Wi-Fi Access Point profesional', 'Diskon khusus edukasi center 3x pertemuan'], popular: true },
+        { name: 'Educate 200', speed: '200 Mbps', price: '6.000.000', features: ['2 Wi-Fi Access Point profesional', 'Firewall dan Keamanan jaringan', 'Konsultasi Gratis infrastruktur IT', 'Diskon khusus edukasi center 7x pertemuan'] },
       ]
     },
     dedicated: {
       title: 'Paket Dedicated',
-      desc: 'Bandwidth prioritas 1:1 untuk performa maksimal',
+      desc: 'Internet Dedicated Untuk Kebutuhan Bisnis Professional',
       icon: 'Server',
       plans: [
-        { name: 'CORP LITE', speed: '10 Mbps', price: 'Call Us', features: ['Bandwidth 1:1 (Simetris)', 'SLA 99.5%', 'IP Public Static /29', '24/7 Priority Support'] },
-        { name: 'CORP STANDARD', speed: '20 Mbps', price: 'Call Us', features: ['Bandwidth 1:1 (Simetris)', 'SLA 99.8%', 'IP Public Static /29', 'MRTG Monitoring'], popular: true },
-        { name: 'CORP ULTIMATE', speed: 'Custom', price: 'Call Us', features: ['Bandwidth Custom (hingga 10Gbps)', 'SLA 99.9%', 'IP Public Custom', 'Fiber Optic Direct Core'] },
+        { name: 'OFFICE LOW', speed: '25 Mbps', price: '1.500.000', features: ['Unlimited Kuota', 'IP Public by Request'] },
+        { name: 'OFFICE MEDIUM', speed: '50 Mbps', price: '2.850.000', features: ['Unlimited Kuota', 'IP Public by Request'], popular: true },
+        { name: 'OFFICE HIGH', speed: '100 Mbps', price: '5.000.000', features: ['Unlimited Kuota', 'IP Public by Request'] },
+        { name: 'OFFICE HIGH UP', speed: '100 Mbps - 10 Gbps', price: 'Call Us', features: ['Unlimited Kuota', 'IP Public by Request'] },
       ]
     }
   },
@@ -178,11 +180,11 @@ export const siteConfig = {
       third: 'Future'
     },
     slides: [
-      "https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=2000&auto=format&fit=crop", // Data Center
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop", // Abstract Tech
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2000&auto=format&fit=crop", // Connectivity
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop", // Speed/Light
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop"  // Cybersecurity/Tech
+      "/hero-1.png",
+      "/hero-2.png",
+      "/hero-3.jpg",
+      "/hero-4.jpg",
+      "/hero-5.png"
     ]
   },
 
@@ -194,19 +196,28 @@ export const siteConfig = {
     customers: '5000+',
     address: 'Perumahan Kebun Bibit Buah Blok A No 1, Sidokerto, Pati, Jawa Tengah 59111',
     mapsUrl: 'https://maps.google.com/?q=Perumahan+Kebun+Bibit+Buah+Blok+A+No+1+Sidokerto+Pati',
-    email: 'info@perkasanetworks.co.id',
+    email: 'cs@perkasa.net.id',
     phone: '+62 812-5200-0220',
-    description: 'Perkasa Networks adalah penyedia layanan internet (ISP) berbasis Fiber Optic yang berkomitmen menghadirkan konektivitas stabil, cepat, dan terjangkau untuk masyarakat Indonesia. Kami hadir untuk mendukung transformasi digital mulai dari rumah, sekolah, hingga sektor bisnis.',
-    vision: 'Menjadi ISP pilihan utama yang menghubungkan seluruh pelosok negeri dengan internet berkualitas.',
+    description: [
+      'Berawal dari sebuah impian besar, serta pengalaman kerja yang cukup banyak di bidang IT dan sistem komunikasi yang telah berkembang selama lebih dari 10 tahun di berbagai perusahaan lokal maupun nasional maka didirikanlah PT. Mega Data Perkasa dengan nama brand Perkasa Networks yang bergerak dalam semua layanan solusi IT dan Komunikasi (Pengadaan, Jasa, Konsultan, Internet Content/Provider, Instalasi dan Maintenace System).',
+      'Dengan berbekal pengalaman yang telah terlatih, teruji, profesional, kreatif dan memiliki sertifikat tehnis tingkat nasional. kami selalu berusaha meningkatkan mutu dan layanan untuk menjaga kepuasan pelanggan terhadap service yang di berikan oleh Perkasa Networks agar dapat menjadi solusi dengan hasil yang memuaskan.'
+    ],
+    vision: 'Menjadi pelopor ekosistem digital masadepan di Indonesia, yang menghadirkan konektivitas tanpa batas, smart home inovatif, teknologi modern yang mutakhir untuk menciptakan kehidupan yang lebih ramah, cerdas, aman, dan efisien.',
     mission: [
-      'Menyediakan infrastruktur Fiber Optic yang handal dan luas.',
-      'Memberikan pelayanan pelanggan yang responsif dan solutif.',
-      'Menghadirkan inovasi teknologi internet terbaru dengan harga kompetitif.',
-      'Mendukung pertumbuhan ekonomi digital UMKM dan pendidikan.'
+      'Membangun dan mengelola infrastruktur jaringan yang handal, cepat, stabil, efektif dan efisien untuk memastikan akses digital yang merata dan berkualitas tinggi bagi seluruh pelanggan.',
+      'Merancang dan menghadirkan produk serta layanan smart home yang intuitif, aman, dan dapat meningkatkan kenyamanan, efisiensi energi, dan keamanan hunian.',
+      'Mengedukasi dan memfasilitasi masyarakat serta bisnis dalam memanfaatkan potensi penuh teknologi Internet of Things (IoT) dan aplikasi berbasis internet lainnya untuk transformasi digital.',
+      'Menjadi mitra terpercaya bagi pelanggan dengan menyediakan dukungan teknis yang responsif, solusi yang efektif efisien, dan pengalaman layanan yang memuaskan.',
+      'Terus melakukan riset dan pengembangan untuk mengadopsi teknologi terbaru, mengantisipasi kebutuhan pasar, dan menghadirkan solusi masa depan yang relevan.'
     ],
     licenses: [
-      'Izin Penyelenggaraan Jasa Akses Internet (ISP) No. XX/Kominfo/2020',
-      'Anggota APJII (Asosiasi Penyelenggara Jasa Internet Indonesia)'
+      'ASN 141636',
+      'SKLO 0155/TEL.04.02/2022',
+      'IZIN ISP 02600102429360002',
+      'NIB 0260010242936',
+      'AHU-0218054.AH.01.11.Tahun2020',
+      'AKTA PENDIRIAN No. 26 17 Desember 2020',
+      'Merk Terdaftar IDM001076147'
     ]
   }
 };

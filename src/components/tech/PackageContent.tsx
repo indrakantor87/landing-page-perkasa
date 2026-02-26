@@ -26,9 +26,8 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
             <motion.div
               key={plan.name}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
               className={clsx(
                 'relative p-8 rounded-2xl border backdrop-blur-md flex flex-col',
                 plan.popular 

@@ -65,10 +65,10 @@ export default function TechFooter() {
       </div>
 
       {/* Large PERKASA Logo - Trae Style */}
-      <div className="w-full overflow-hidden select-none pointer-events-none mt-0 leading-[0.75] relative h-[25vw] flex items-end justify-center">
-        <div className="relative w-full h-full scale-110 translate-y-[10%] opacity-50 mix-blend-overlay grayscale">
+      <div className="w-full overflow-hidden select-none pointer-events-none mt-0 leading-[0.75] relative h-[35vw] flex items-end justify-center">
+        <div className="relative w-full h-full scale-[1.5] -translate-y-[15%] opacity-50 mix-blend-overlay">
           <Image 
-            src="/logo-perkasa-new.png" 
+            src="/footer-1.png" 
             alt="PERKASA" 
             fill 
             className="object-contain object-bottom"

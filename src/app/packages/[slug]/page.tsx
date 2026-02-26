@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import TechNavbar from '@/components/tech/TechNavbar';
 import TechBackground from '@/components/tech/TechBackground';
-import TechAnnouncement from '@/components/tech/TechAnnouncement';
 import { siteConfig } from '@/data/site-config';
 import PackageHero from '@/components/tech/PackageHero';
 import PackageContent from '@/components/tech/PackageContent';
@@ -44,7 +43,6 @@ export default async function PackagePage({ params }: { params: { slug: string }
 
   return (
     <main className="min-h-screen bg-[#0B0F19] text-white selection:bg-perkasa-red/30 selection:text-white relative">
-      <TechAnnouncement />
       <TechBackground />
 
       <div className="relative z-10">

@@ -2,16 +2,25 @@ import dynamic from 'next/dynamic';
 import TechNavbar from '@/components/tech/TechNavbar';
 import TechHero from '@/components/tech/TechHero';
 import TechBackground from '@/components/tech/TechBackground';
-import TechAnnouncement from '@/components/tech/TechAnnouncement';
 import PopupBanner from '@/components/tech/PopupBanner';
+// BottomActionBar di-nonaktifkan
 
-// Dynamic imports for below-fold components
-const TechFeatures = dynamic(() => import('@/components/tech/TechFeatures'));
-const TechPricing = dynamic(() => import('@/components/tech/TechPricing'));
-const TechTestimonials = dynamic(() => import('@/components/tech/TechTestimonials'));
-const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'));
+// Dynamic imports for below-fold components with loading skeletons
+const TechFeatures = dynamic(() => import('@/components/tech/TechFeatures'), {
+  loading: () => <div className="h-[600px] w-full bg-[#0B0F19] animate-pulse" />
+});
+const TechPricing = dynamic(() => import('@/components/tech/TechPricing'), {
+  loading: () => <div className="h-[800px] w-full bg-[#0B0F19] animate-pulse" />
+});
+const TechTestimonials = dynamic(() => import('@/components/tech/TechTestimonials'), {
+  loading: () => <div className="h-[400px] w-full bg-[#0B0F19] animate-pulse" />
+});
+const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'), {
+  loading: () => <div className="h-[500px] w-full bg-[#0B0F19] animate-pulse" />
+});
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
+// Client-only component for WhatsApp button to avoid hydration mismatch
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
 
 export const metadata = {
@@ -30,7 +39,6 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0B0F19] text-white selection:bg-perkasa-red/30 selection:text-white relative">
-      <TechAnnouncement />
       {/* Global Background */}
       <TechBackground />
 
