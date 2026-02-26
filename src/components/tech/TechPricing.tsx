@@ -44,30 +44,29 @@ export default function TechPricing() {
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch justify-center">
           {siteConfig.packages[activeTab].plans.map((plan, index) => (
-            <motion.div
+            <div 
               key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className={clsx(
-                'relative p-8 rounded-3xl border flex flex-col transition-all duration-300 group backdrop-blur-sm',
+              className={`relative flex flex-col p-8 rounded-2xl border backdrop-blur-sm transition-all duration-300 group hover:scale-105 hover:shadow-2xl ${
                 (plan as any).popular 
-                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] scale-105 z-10 will-change-transform' 
-                  : 'bg-black/20 border-white/10 hover:border-[#00B4D8]/30 hover:bg-black/30'
-              )}
+                  ? 'bg-gradient-to-b from-perkasa-red/20 to-black/60 border-perkasa-red/50 shadow-lg shadow-perkasa-red/20' 
+                  : 'bg-black/40 border-white/10 hover:border-perkasa-blue/50'
+              }`}
             >
               {(plan as any).popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF3D00] to-[#FF9100] text-white text-[10px] font-bold px-4 py-1.5 rounded-full tracking-widest uppercase shadow-lg ring-1 ring-white/20">
-                  Rekomendasi
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg shadow-red-900/50">
+                  PALING LARIS
                 </div>
               )}
 
-              <h3 className="text-sm font-bold tracking-[0.2em] mb-4 text-white uppercase group-hover:text-white transition-colors">
-                {plan.name}
-              </h3>
-              
-              <div className="mb-6 pb-6 border-b border-white/5">
-                <span className="text-5xl font-bold text-white tracking-tighter">{plan.speed}</span>
+              <div className="mb-6 text-center">
+                <h3 className={`text-2xl font-bold mb-2 transition-colors duration-300 ${
+                  plan.name === 'HOME BASIC' 
+                    ? 'text-perkasa-red' 
+                    : 'text-white group-hover:text-perkasa-blue'
+                }`}>
+                  {plan.name}
+                </h3>
+                <span className="text-4xl font-bold text-white drop-shadow-md">{plan.speed}</span>
               </div>
 
               <div className="flex items-baseline gap-1 mb-8">
@@ -94,19 +93,18 @@ export default function TechPricing() {
               </ul>
 
               <a
-                href={`https://wa.me/6281252000220?text=Halo,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(plan.name)}`}
+                href={`https://wa.me/6281252000220?text=Halo,%20saya%20tertarik%20dengan%20${encodeURIComponent(plan.name)}%20(${siteConfig.packages[activeTab].title})`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={clsx(
-                  'w-full py-3 rounded-xl font-bold transition-all text-center block shadow-lg',
-                  (plan as any).popular
-                    ? 'bg-gradient-to-r from-[#FF3D00] to-[#FF9100] hover:from-[#E63600] hover:to-[#E68200] text-white shadow-[#FF3D00]/30 hover:shadow-[#FF3D00]/50'
-                    : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/30'
-                )}
+                className={`w-full py-3 rounded-lg font-bold text-center transition-all duration-300 ${
+                  plan.name === 'HOME BASIC'
+                    ? 'bg-perkasa-red text-white hover:bg-red-700 shadow-lg shadow-red-900/30'
+                    : 'bg-white text-black group-hover:bg-perkasa-blue group-hover:text-white hover:shadow-lg hover:shadow-blue-900/30'
+                }`}
               >
                 Pilih Paket
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
 

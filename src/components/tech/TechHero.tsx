@@ -5,12 +5,16 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import CoverageCheckModal from './CoverageCheckModal';
+import dynamic from 'next/dynamic';
 import { siteConfig } from '@/data/site-config';
+
+// Lazy load map section
+const CoverageMapSection = dynamic(() => import('./CoverageMapSection'), {
+  loading: () => <div className="w-full h-[500px] bg-white/5 animate-pulse rounded-2xl" />
+});
 
 export default function TechHero() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isCoverageModalOpen, setIsCoverageModalOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -143,26 +147,12 @@ export default function TechHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          className="w-full"
         >
-          <button 
-            onClick={() => setIsCoverageModalOpen(true)}
-            className="group relative px-8 py-4 bg-gradient-to-r from-perkasa-red via-purple-600 to-perkasa-blue text-white font-bold rounded-lg overflow-hidden transition-all hover:scale-105 shadow-lg shadow-red-900/20 inline-block text-center cursor-pointer"
-          >
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            <span className="relative flex items-center justify-center gap-2">
-              Cek Ketersediaan <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </button>
+          <CoverageMapSection />
         </motion.div>
 
       </div>
-      
-      {/* Coverage Modal */}
-      <CoverageCheckModal 
-        isOpen={isCoverageModalOpen} 
-        onClose={() => setIsCoverageModalOpen(false)} 
-      />
     </section>
   );
 }

@@ -23,29 +23,28 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch justify-center">
           {plans.map((plan, index) => (
-            <motion.div
+            <div 
               key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2 }}
-              className={clsx(
-                'relative p-6 md:p-8 rounded-2xl border backdrop-blur-sm flex flex-col shadow-lg transition-all duration-300',
+              className={`relative flex flex-col p-8 rounded-2xl border backdrop-blur-sm transition-all duration-300 group hover:scale-105 hover:shadow-2xl ${
                 plan.popular 
-                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] z-10 md:scale-105 will-change-transform' 
-                  : 'bg-black/20 border-white/10 hover:border-[#00B4D8]/30 hover:bg-black/30 hover:shadow-[0_0_20px_rgba(0,180,216,0.1)]'
-              )}
+                  ? 'bg-gradient-to-b from-perkasa-red/20 to-black/60 border-perkasa-red/50 shadow-lg shadow-perkasa-red/20' 
+                  : 'bg-black/40 border-white/10 hover:border-perkasa-blue/50'
+              }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider uppercase shadow-lg shadow-red-900/50">
-                  Rekomendasi
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg shadow-red-900/50">
+                  PALING LARIS
                 </div>
               )}
 
-              <h3 className={clsx("text-lg font-bold tracking-widest mb-2 text-white")}>
-                {plan.name}
-              </h3>
-              
-              <div className="mb-6">
+              <div className="mb-6 text-center">
+                <h3 className={`text-2xl font-bold mb-2 transition-colors duration-300 ${
+                  plan.name === 'HOME BASIC' 
+                    ? 'text-perkasa-red' 
+                    : 'text-white group-hover:text-perkasa-blue'
+                }`}>
+                  {plan.name}
+                </h3>
                 <span className="text-4xl font-bold text-white">{plan.speed}</span>
               </div>
 
@@ -74,16 +73,15 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
                 href={`https://wa.me/6281252000220?text=Halo,%20saya%20tertarik%20dengan%20${encodeURIComponent(plan.name)}%20(${title})`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={clsx(
-                  'w-full py-3 rounded-xl font-bold transition-all text-center block shadow-lg',
-                  plan.popular
-                    ? 'bg-perkasa-red hover:bg-red-700 text-white shadow-red-900/40'
-                    : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/30'
-                )}
+                className={`w-full py-3 rounded-lg font-bold text-center transition-all duration-300 ${
+                  plan.name === 'HOME BASIC'
+                    ? 'bg-perkasa-red text-white hover:bg-red-700 shadow-lg shadow-red-900/30'
+                    : 'bg-white text-black group-hover:bg-perkasa-blue group-hover:text-white hover:shadow-lg hover:shadow-blue-900/30'
+                }`}
               >
                 Pilih Paket
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
 
