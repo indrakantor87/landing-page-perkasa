@@ -259,7 +259,7 @@ export const siteConfig = {
   // 7. FOOTER SECTION
   footer: {
     socials: [
-      { name: '081252000220', link: 'https://wa.me/6281252000220', icon: 'Video', color: 'text-green-400', bgHover: 'group-hover:bg-green-500/20' },
+      { name: '081252000220', link: 'https://wa.me/6281252000220', icon: 'Whatsapp', color: 'text-green-400', bgHover: 'group-hover:bg-green-500/20' },
       { name: 'perkasa_networks', link: 'https://instagram.com/perkasa_networks', icon: 'Instagram', color: 'text-pink-400', bgHover: 'group-hover:bg-pink-500/20' },
       { name: 'perkasa networks', link: 'https://facebook.com/perkasa.networks', icon: 'Facebook', color: 'text-blue-400', bgHover: 'group-hover:bg-blue-500/20' },
       { name: 'perkasa.networks', link: 'https://tiktok.com/@perkasa.networks', icon: 'Video', color: 'text-white', bgHover: 'group-hover:bg-white/20' } // Using Video icon as placeholder for TikTok if not available in lucide-react mapping or use custom SVG in component
@@ -279,8 +279,10 @@ export const siteConfig = {
     customers: '5000+',
     address: 'Perumahan Kebun Bibit Buah Blok A No 1, Sidokerto, Pati, Jawa Tengah 59111',
     mapsUrl: 'https://maps.app.goo.gl/FHfDjLpTrqNUKr7W8',
-    email: 'cs@perkasa.net.id',
-    phone: '+62 812-5200-0220', link: 'https://wa.me/6281252000220',
+    email: 'callcentre@perkasa.net.id',
+    link: 'https://mail.google.com',
+    phone: '0812-5200-0220', 
+    link: 'https://wa.me/6281252000220',
     description: [
       'Berawal dari sebuah impian besar, serta pengalaman kerja yang cukup banyak di bidang IT dan sistem komunikasi yang telah berkembang selama lebih dari 10 tahun di berbagai perusahaan lokal maupun nasional maka didirikanlah PT. Mega Data Perkasa dengan nama brand Perkasa Networks yang bergerak dalam semua layanan solusi IT dan Komunikasi (Pengadaan, Jasa, Konsultan, Internet Content/Provider, Instalasi dan Maintenance System).',
       'Dengan berbekal pengalaman yang telah terlatih, teruji, profesional, kreatif dan memiliki sertifikat teknis tingkat nasional. Kami selalu berusaha meningkatkan mutu dan layanan untuk menjaga kepuasan pelanggan terhadap service yang di berikan oleh Perkasa Networks agar dapat menjadi solusi dengan hasil yang memuaskan.'
