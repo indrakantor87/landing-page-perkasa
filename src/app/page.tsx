@@ -3,6 +3,7 @@ import TechNavbar from '@/components/tech/TechNavbar';
 import TechHero from '@/components/tech/TechHero';
 import TechBackground from '@/components/tech/TechBackground';
 import TechAnnouncement from '@/components/tech/TechAnnouncement';
+import PopupBanner from '@/components/tech/PopupBanner';
 
 // Dynamic imports for below-fold components
 const TechFeatures = dynamic(() => import('@/components/tech/TechFeatures'));
@@ -12,7 +13,6 @@ const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'));
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
-const PopupBanner = dynamic(() => import('@/components/tech/PopupBanner'), { ssr: false });
 
 export const metadata = {
   title: 'Perkasa Networks | Connect Your Future',
