@@ -106,7 +106,7 @@ export default function TechPricing() {
         {/* Additional Info */}
         <div className="mt-16 text-center">
             <p className="text-gray-500 text-sm max-w-2xl mx-auto">
-              *Harga belum termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih.
+              *Harga sudah termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih.
               Ketersediaan jaringan fiber optic bergantung pada lokasi.
             </p>
         </div>

@@ -86,6 +86,13 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-12 text-center">
+            <p className="text-gray-500 text-sm max-w-2xl mx-auto">
+              *Harga sudah termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih.
+              Ketersediaan jaringan fiber optic bergantung pada lokasi.
+            </p>
+        </div>
       </div>
     </section>
   );
