@@ -18,18 +18,18 @@ export default function TechTestimonials() {
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black/20 to-transparent z-10" />
         
         <motion.div 
-          className="flex gap-6 w-max"
+          className="flex gap-6 w-max will-change-transform"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
             repeat: Infinity, 
             ease: "linear", 
-            duration: 40 
+            duration: 60 
           }}
         >
           {[...siteConfig.testimonials, ...siteConfig.testimonials].map((item, i) => (
             <div 
               key={i} 
-              className="w-[350px] p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md hover:border-[#00B4D8]/50 transition-colors shadow-lg"
+              className="w-[350px] p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm hover:border-[#00B4D8]/50 transition-colors shadow-lg"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">

@@ -12,6 +12,7 @@ export default function TechCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          className="will-change-transform"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">
             Siap untuk <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]">Upgrade?</span>
@@ -23,6 +24,7 @@ export default function TechCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
+          className="will-change-transform"
         >
           <p className="text-gray-100 text-lg mb-8 max-w-2xl mx-auto font-medium drop-shadow-md">
             Bergabunglah dengan jaringan masa depan, tersedia hari ini. Rasakan kecepatan tanpa batas.
@@ -34,6 +36,7 @@ export default function TechCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
+          className="will-change-transform"
         >
           <a 
             href="https://wa.me/6281252000220?text=Halo,%20saya%20ingin%20berlangganan%20internet%20Perkasa%20Networks"

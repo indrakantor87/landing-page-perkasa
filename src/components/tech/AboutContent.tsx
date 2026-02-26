@@ -15,7 +15,7 @@ export default function AboutContent() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-md shadow-lg"
+            className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Calendar className="w-12 h-12 text-perkasa-red mx-auto mb-4 drop-shadow-md" />
             <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">{siteConfig.company.foundedYear}</h3>
@@ -27,7 +27,7 @@ export default function AboutContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-md shadow-lg"
+            className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Users className="w-12 h-12 text-perkasa-blue mx-auto mb-4 drop-shadow-md" />
             <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">{siteConfig.company.customers}</h3>
@@ -39,7 +39,7 @@ export default function AboutContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-md shadow-lg"
+            className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Award className="w-12 h-12 text-yellow-500 mx-auto mb-4 drop-shadow-md" />
             <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">Resmi</h3>
@@ -53,7 +53,7 @@ export default function AboutContent() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="p-8 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md shadow-lg"
+            className="p-8 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm shadow-lg will-change-transform"
           >
             <h2 className="text-3xl font-bold text-white mb-6 border-l-4 border-perkasa-red pl-4 drop-shadow-md">Visi & Misi</h2>
             <div className="mb-8">
@@ -78,7 +78,7 @@ export default function AboutContent() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-black/40 border border-white/10 rounded-2xl p-8 h-fit backdrop-blur-md shadow-lg"
+            className="bg-black/40 border border-white/10 rounded-2xl p-8 h-fit backdrop-blur-sm shadow-lg will-change-transform"
           >
             <h2 className="text-2xl font-bold text-white mb-6 drop-shadow-md">Legalitas Perusahaan</h2>
             <ul className="space-y-4">

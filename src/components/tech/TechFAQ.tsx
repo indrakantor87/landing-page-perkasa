@@ -27,7 +27,7 @@ export default function TechFAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="rounded-2xl bg-black/40 border border-white/10 overflow-hidden backdrop-blur-md transition-colors hover:border-[#00B4D8]/50 shadow-lg"
+              className="rounded-2xl bg-black/40 border border-white/10 overflow-hidden backdrop-blur-sm transition-colors hover:border-[#00B4D8]/50 shadow-lg will-change-transform"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

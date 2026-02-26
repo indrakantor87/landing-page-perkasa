@@ -29,9 +29,9 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
               className={clsx(
-                'relative p-6 md:p-8 rounded-2xl border backdrop-blur-md flex flex-col shadow-lg transition-all duration-300',
+                'relative p-6 md:p-8 rounded-2xl border backdrop-blur-sm flex flex-col shadow-lg transition-all duration-300',
                 plan.popular 
-                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] z-10 md:scale-105' 
+                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] z-10 md:scale-105 will-change-transform' 
                   : 'bg-black/20 border-white/10 hover:border-[#00B4D8]/30 hover:bg-black/30 hover:shadow-[0_0_20px_rgba(0,180,216,0.1)]'
               )}
             >

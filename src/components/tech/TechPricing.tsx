@@ -43,9 +43,9 @@ export default function TechPricing() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className={clsx(
-                'relative p-8 rounded-3xl border flex flex-col transition-all duration-300 group backdrop-blur-md',
+                'relative p-8 rounded-3xl border flex flex-col transition-all duration-300 group backdrop-blur-sm',
                 (plan as any).popular 
-                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] scale-105 z-10' 
+                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] scale-105 z-10 will-change-transform' 
                   : 'bg-black/20 border-white/10 hover:border-[#00B4D8]/30 hover:bg-black/30'
               )}
             >

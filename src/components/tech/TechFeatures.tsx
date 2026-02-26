@@ -82,7 +82,7 @@ export default function TechFeatures() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className={clsx(
-                  'p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md bg-black/40 transition-all duration-300 group h-full block shadow-lg hover:bg-black/60',
+                  'p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-sm bg-black/40 transition-all duration-300 group h-full block shadow-lg hover:bg-black/60 will-change-transform',
                   feature.colSpan,
                   feature.border
                 )}

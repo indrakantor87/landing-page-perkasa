@@ -47,22 +47,22 @@ export default function TechHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-8 select-none drop-shadow-lg"
+          className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-8 select-none drop-shadow-lg will-change-transform"
         >
           <motion.span 
-            className="inline-block text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.6)] transition-all duration-300 cursor-default"
+            className="inline-block text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.6)] transition-all duration-300 cursor-default will-change-transform"
             whileHover={{ scale: 1.05 }}
           >
             {siteConfig.hero.title.first}
           </motion.span>{" "}
           <motion.span 
-            className="inline-block text-perkasa-red drop-shadow-[0_0_20px_rgba(220,38,38,0.6)] hover:drop-shadow-[0_0_35px_rgba(220,38,38,0.9)] transition-all duration-300 cursor-default"
+            className="inline-block text-perkasa-red drop-shadow-[0_0_20px_rgba(220,38,38,0.6)] hover:drop-shadow-[0_0_35px_rgba(220,38,38,0.9)] transition-all duration-300 cursor-default will-change-transform"
             whileHover={{ scale: 1.05 }}
           >
             {siteConfig.hero.title.second}
           </motion.span>{" "}
           <motion.span 
-            className="inline-block text-perkasa-blue drop-shadow-[0_0_20px_rgba(37,99,235,0.6)] hover:drop-shadow-[0_0_35px_rgba(37,99,235,0.9)] transition-all duration-300 cursor-default"
+            className="inline-block text-perkasa-blue drop-shadow-[0_0_20px_rgba(37,99,235,0.6)] hover:drop-shadow-[0_0_35px_rgba(37,99,235,0.9)] transition-all duration-300 cursor-default will-change-transform"
             whileHover={{ scale: 1.05 }}
           >
             {siteConfig.hero.title.third}

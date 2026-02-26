@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function TechFooter() {
   return (
-    <footer id="contact" className="bg-black/20 backdrop-blur-xl border-t border-white/10 relative z-10 pt-16 pb-0 overflow-hidden">
+    <footer id="contact" className="bg-black/20 backdrop-blur-md border-t border-white/10 relative z-10 pt-16 pb-0 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-0">
           {/* Logo Section */}
           <div className="text-center md:text-left relative">
