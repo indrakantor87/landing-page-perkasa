@@ -280,7 +280,7 @@ export const siteConfig = {
     address: 'Perumahan Kebun Bibit Buah Blok A No 1, Sidokerto, Pati, Jawa Tengah 59111',
     mapsUrl: 'https://maps.app.goo.gl/FHfDjLpTrqNUKr7W8',
     email: 'callcentre@perkasa.net.id',
-    link: 'https://mail.google.com',
+    link1: 'https://mail.google.com',
     phone: '0812-5200-0220', 
     link: 'https://wa.me/6281252000220',
     description: [
