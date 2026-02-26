@@ -14,7 +14,7 @@ export const siteConfig = {
   announcement: {
     active: true,
     badge: 'PROMO',
-    text: 'Gratis Biaya Instalasi + Diskon 50% Bulan Pertama untuk Pendaftaran Hari Ini!',
+    text: 'Gratis Biaya Instalasi + Diskon 6,7% Untuk Pemasangan Baru Paket Home Lite!',
     link: '#pricing', // Optional link when clicked
   },
 
@@ -22,7 +22,7 @@ export const siteConfig = {
   packages: {
     home: {
       title: 'Paket Home',
-      desc: 'Internet rumah ultra-cepat untuk keluarga',
+      desc: 'Internet rumah cepat-stabil untuk keluarga',
       icon: 'Home',
       plans: [
         { 
@@ -40,7 +40,7 @@ export const siteConfig = {
         },
         { 
           name: 'HOME STREAM', 
-          speed: '35 Mbps', 
+          speed: '35/55 Mbps', 
           price: '200.000', 
           features: ['Kuota Unlimited', 'Ideal untuk 10 Perangkat', 'Upload hingga 55 Mbps'] 
         },
@@ -188,7 +188,7 @@ export const siteConfig = {
 
   // 6. COMPANY PROFILE
   company: {
-    name: 'PT Perkasa Networks Indonesia',
+    name: 'PT Mega Data Perkasa',
     shortName: 'Perkasa Networks',
     foundedYear: 2020,
     customers: '5000+',
