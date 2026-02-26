@@ -29,7 +29,7 @@ export default function TechNavbar() {
               alt="Perkasa Networks" 
               width={360} 
               height={120} 
-              className="h-20 md:h-28 w-auto object-contain absolute top-1/2 -translate-y-1/2 left-0"
+              className="h-28 md:h-40 w-auto object-contain absolute top-1/2 -translate-y-[47%] left-0"
               priority
             />
           </Link>
