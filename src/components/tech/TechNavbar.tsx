@@ -19,7 +19,7 @@ export default function TechNavbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/80 backdrop-blur-lg border-b border-white/5 shadow-lg shadow-black/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/5 shadow-lg shadow-black/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -46,7 +46,7 @@ export default function TechNavbar() {
                     onMouseEnter={() => setActiveDropdown('paket')}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white transition-colors group-hover:text-perkasa-red py-4">
+                    <button className="flex items-center gap-1 text-sm font-medium text-gray-100 hover:text-white transition-colors group-hover:text-perkasa-red py-4 drop-shadow-md">
                       {item}
                       <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === 'paket' ? 'rotate-180' : ''}`} />
                     </button>
@@ -93,7 +93,7 @@ export default function TechNavbar() {
                   className="relative group"
                 >
                   <motion.span 
-                    className="inline-block text-sm font-medium text-gray-300 transition-all duration-300 group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+                    className="inline-block text-sm font-medium text-gray-100 transition-all duration-300 group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] drop-shadow-md"
                     whileHover={{ scale: 1.1 }}
                   >
                     {item}

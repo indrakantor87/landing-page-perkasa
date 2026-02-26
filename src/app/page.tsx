@@ -38,9 +38,9 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0B0F19] text-white selection:bg-perkasa-red/30 selection:text-white relative">
-      {/* Global Background */}
-      <TechBackground />
+    <main className="min-h-screen text-white selection:bg-perkasa-red/30 selection:text-white relative">
+      {/* Global Background - DISABLED to use CSS background image */}
+      {/* <TechBackground /> */}
 
       <div className="relative z-10">
         <TechNavbar />

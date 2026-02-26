@@ -38,8 +38,17 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        style={{
+          backgroundImage: "url('/main-bg.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#020617'
+        }}
       >
+        <div className="fixed inset-0 bg-black/50 z-[-1] pointer-events-none" />
         {children}
       </body>
     </html>

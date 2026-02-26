@@ -6,15 +6,15 @@ export default function TechCTA() {
   return (
     <section id="upgrade" className="py-20 relative overflow-hidden bg-transparent">
       <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-blue-900/20" />
-      <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <div className="max-w-4xl mx-auto px-4 text-center relative z-10 p-8 rounded-3xl bg-black/30 backdrop-blur-md border border-white/10 shadow-2xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Siap untuk <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">Upgrade?</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">
+            Siap untuk <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]">Upgrade?</span>
           </h2>
         </motion.div>
 
@@ -24,7 +24,7 @@ export default function TechCTA() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-gray-100 text-lg mb-8 max-w-2xl mx-auto font-medium drop-shadow-md">
             Bergabunglah dengan jaringan masa depan, tersedia hari ini. Rasakan kecepatan tanpa batas.
           </p>
         </motion.div>

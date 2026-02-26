@@ -14,8 +14,8 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#0B0F19] text-white selection:bg-perkasa-red/30 selection:text-white relative">
-      <TechBackground />
+    <main className="min-h-screen text-white selection:bg-perkasa-red/30 selection:text-white relative">
+      {/* <TechBackground /> */}
 
       <div className="relative z-10">
         <TechNavbar />

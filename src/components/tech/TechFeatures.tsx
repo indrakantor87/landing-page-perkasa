@@ -82,17 +82,16 @@ export default function TechFeatures() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className={clsx(
-                  'p-6 md:p-8 rounded-2xl border border-white/5 backdrop-blur-sm transition-all duration-300 group h-full block',
+                  'p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md bg-black/40 transition-all duration-300 group h-full block shadow-lg hover:bg-black/60',
                   feature.colSpan,
-                  feature.bg,
                   feature.border
                 )}
               >
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <feature.icon className={clsx('w-6 h-6', feature.color)} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3 drop-shadow-md">{feature.title}</h3>
+                <p className="text-gray-200 leading-relaxed font-medium drop-shadow-sm">{feature.description}</p>
               </Component>
             );
           })}

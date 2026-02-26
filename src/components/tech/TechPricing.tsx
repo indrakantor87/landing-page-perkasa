@@ -11,9 +11,9 @@ export default function TechPricing() {
   const HomeIcon = iconMap.Home;
 
   return (
-    <section id="pricing" className="py-24 relative overflow-hidden bg-gradient-to-b from-[#0F172A] to-[#020617]">
+    <section id="pricing" className="py-24 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,102,255,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,180,216,0.1),transparent_50%)]" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -43,10 +43,10 @@ export default function TechPricing() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className={clsx(
-                'relative p-8 rounded-3xl border flex flex-col transition-all duration-300 group',
+                'relative p-8 rounded-3xl border flex flex-col transition-all duration-300 group backdrop-blur-md',
                 (plan as any).popular 
-                  ? 'bg-gradient-to-b from-white/10 to-white/5 border-perkasa-red/40 shadow-2xl shadow-perkasa-red/10 scale-105 z-10' 
-                  : 'bg-white/5 border-white/5 hover:border-white/10 hover:bg-white/[0.07]'
+                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] scale-105 z-10' 
+                  : 'bg-black/20 border-white/10 hover:border-[#00B4D8]/30 hover:bg-black/30'
               )}
             >
               {(plan as any).popular && (
@@ -65,21 +65,21 @@ export default function TechPricing() {
 
               <div className="flex items-baseline gap-1 mb-8">
                 {plan.price === 'Call Us' ? (
-                   <span className="text-2xl font-bold text-white">Hubungi Kami</span>
+                   <span className="text-2xl font-bold text-white drop-shadow-md">Hubungi Kami</span>
                 ) : (
                   <>
-                    <span className="text-sm text-gray-400 font-medium">Rp</span>
-                    <span className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">{plan.price}</span>
-                    <span className="text-sm text-gray-500 font-medium">/bln</span>
+                    <span className="text-sm text-gray-200 font-medium">Rp</span>
+                    <span className="text-4xl font-bold text-white drop-shadow-md">{plan.price}</span>
+                    <span className="text-sm text-gray-200 font-medium">/bln</span>
                   </>
                 )}
               </div>
 
               <ul className="space-y-4 mb-10 flex-1">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                    <div className="p-1 rounded-full bg-perkasa-blue/10 shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-perkasa-blue" />
+                  <li key={feature} className="flex items-start gap-3 text-gray-100 text-sm group-hover:text-white transition-colors font-medium drop-shadow-sm">
+                    <div className="p-1 rounded-full bg-[#00B4D8]/20 shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-[#00B4D8]" />
                     </div>
                     <span>{feature}</span>
                   </li>
@@ -91,9 +91,9 @@ export default function TechPricing() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={clsx(
-                  'w-full py-4 rounded-xl font-bold transition-all text-center block tracking-wide text-sm relative overflow-hidden',
+                  'w-full py-4 rounded-xl font-bold transition-all text-center block tracking-wide text-sm relative overflow-hidden shadow-lg',
                   (plan as any).popular
-                    ? 'bg-gradient-to-r from-[#FF4500] via-[#8A2BE2] to-[#0066FF] text-white shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 hover:scale-[1.02]'
+                    ? 'bg-gradient-to-r from-[#FF3D00] to-[#FF9100] text-white shadow-lg shadow-red-900/30 hover:shadow-red-900/50 hover:scale-[1.02]'
                     : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20'
                 )}
               >

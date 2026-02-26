@@ -25,7 +25,14 @@
 }
 
 body {
-  background: radial-gradient(circle at top center, #1a2035 0%, #020617 100%);
+  /* Option 2: Soft Blue/Sky (Clean & Trustworthy) - MATCHING USER REQUEST (66FFFF/99FFFF vibe) */
+  background-color: #020617; /* Fallback */
+  background-image: url('/main-bg.webp') !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   min-height: 100vh;

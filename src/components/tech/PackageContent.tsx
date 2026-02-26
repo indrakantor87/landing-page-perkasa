@@ -29,14 +29,14 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2 }}
               className={clsx(
-                'relative p-6 md:p-8 rounded-2xl border backdrop-blur-md flex flex-col',
+                'relative p-6 md:p-8 rounded-2xl border backdrop-blur-md flex flex-col shadow-lg transition-all duration-300',
                 plan.popular 
-                  ? 'bg-gradient-to-b from-white/10 to-transparent border-perkasa-red/50 shadow-2xl shadow-red-900/20 z-10 md:scale-105' 
-                  : 'bg-white/5 border-white/10 hover:border-white/20'
+                  ? 'bg-black/30 border-[#00B4D8]/50 shadow-[0_0_30px_rgba(0,180,216,0.2)] z-10 md:scale-105' 
+                  : 'bg-black/20 border-white/10 hover:border-[#00B4D8]/30 hover:bg-black/30 hover:shadow-[0_0_20px_rgba(0,180,216,0.1)]'
               )}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider uppercase shadow-lg">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider uppercase shadow-lg shadow-red-900/50">
                   Rekomendasi
                 </div>
               )}
@@ -51,20 +51,20 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
 
               <div className="flex items-baseline gap-1 mb-8 pb-8 border-b border-white/10">
                 {plan.price === 'Call Us' ? (
-                   <span className="text-2xl font-bold text-white">Hubungi Kami</span>
+                   <span className="text-2xl font-bold text-white drop-shadow-md">Hubungi Kami</span>
                 ) : (
                   <>
-                    <span className="text-sm text-gray-400">Rp</span>
-                    <span className="text-3xl font-bold text-white">{plan.price}</span>
-                    <span className="text-sm text-gray-500">/bln</span>
+                    <span className="text-sm text-gray-200 font-medium">Rp</span>
+                    <span className="text-3xl font-bold text-white drop-shadow-md">{plan.price}</span>
+                    <span className="text-sm text-gray-200 font-medium">/bln</span>
                   </>
                 )}
               </div>
 
               <ul className="space-y-4 mb-8 flex-1">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-gray-300 text-sm">
-                    <Check className="w-5 h-5 text-perkasa-red shrink-0 mt-0.5" />
+                  <li key={feature} className="flex items-start gap-3 text-gray-100 font-medium text-sm drop-shadow-sm">
+                    <Check className="w-5 h-5 text-[#00B4D8] shrink-0 mt-0.5 drop-shadow-[0_0_10px_rgba(0,180,216,0.5)]" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -75,10 +75,10 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={clsx(
-                  'w-full py-3 rounded-xl font-bold transition-all text-center block',
+                  'w-full py-3 rounded-xl font-bold transition-all text-center block shadow-lg',
                   plan.popular
-                    ? 'bg-perkasa-red hover:bg-red-700 text-white shadow-lg shadow-red-900/40'
-                    : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+                    ? 'bg-perkasa-red hover:bg-red-700 text-white shadow-red-900/40'
+                    : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/30'
                 )}
               >
                 Pilih Paket

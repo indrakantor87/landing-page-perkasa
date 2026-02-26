@@ -23,10 +23,10 @@ export default function TechHero() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + siteConfig.hero.slides.length) % siteConfig.hero.slides.length);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-28 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-28 overflow-hidden">
       {/* Animated Grid Overlay (Optional - kept for style) */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
@@ -47,7 +47,7 @@ export default function TechHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-8 select-none"
+          className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-8 select-none drop-shadow-lg"
         >
           <motion.span 
             className="inline-block text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.6)] transition-all duration-300 cursor-default"
