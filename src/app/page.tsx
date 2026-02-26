@@ -10,7 +10,7 @@ const TechPricing = dynamic(() => import('@/components/tech/TechPricing'));
 const TechTestimonials = dynamic(() => import('@/components/tech/TechTestimonials'));
 const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'));
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
-const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
+const TechFooterReveal = dynamic(() => import('@/components/tech/TechFooterReveal'));
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
 
 export const metadata = {
@@ -33,7 +33,7 @@ export default function Home() {
       {/* Global Background */}
       <TechBackground />
 
-      <div className="relative z-10">
+      <div className="relative z-10 bg-[#0B0F19]">
         <TechNavbar />
         <TechHero />
         <TechFeatures />
@@ -43,9 +43,11 @@ export default function Home() {
         
         {/* CTA Section */}
         <TechCTA />
-
-        <TechFooter />
       </div>
+
+      {/* Footer Reveal Effect */}
+      <TechFooterReveal />
+
       <WhatsAppButton />
     </main>
   );
