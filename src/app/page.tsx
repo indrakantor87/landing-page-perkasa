@@ -19,9 +19,7 @@ const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'), {
 });
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
-const TechBackground = dynamic(() => import('@/components/tech/TechBackground'), {
-  ssr: false // Background animation doesn't need SSR
-});
+const TechBackground = dynamic(() => import('@/components/tech/TechBackground'));
 // Client-only component for WhatsApp button to avoid hydration mismatch
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
 
