@@ -280,9 +280,7 @@ export const siteConfig = {
     address: 'Perumahan Kebun Bibit Buah Blok A No 1, Sidokerto, Pati, Jawa Tengah 59111',
     mapsUrl: 'https://maps.app.goo.gl/FHfDjLpTrqNUKr7W8',
     email: 'callcentre@perkasa.net.id',
-    emailUrl: 'https://mail.google.com',
-    phone: '0812-5200-0220', 
-    phoneUrl: 'https://wa.me/6281252000220',
+    phone: '0812-5200-0220',
     description: [
       'Berawal dari sebuah impian besar, serta pengalaman kerja yang cukup banyak di bidang IT dan sistem komunikasi yang telah berkembang selama lebih dari 10 tahun di berbagai perusahaan lokal maupun nasional maka didirikanlah PT. Mega Data Perkasa dengan nama brand Perkasa Networks yang bergerak dalam semua layanan solusi IT dan Komunikasi (Pengadaan, Jasa, Konsultan, Internet Content/Provider, Instalasi dan Maintenance System).',
       'Dengan berbekal pengalaman yang telah terlatih, teruji, profesional, kreatif dan memiliki sertifikat teknis tingkat nasional. Kami selalu berusaha meningkatkan mutu dan layanan untuk menjaga kepuasan pelanggan terhadap service yang di berikan oleh Perkasa Networks agar dapat menjadi solusi dengan hasil yang memuaskan.'
