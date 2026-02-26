@@ -1,4 +1,8 @@
-import { Home, Building2, GraduationCap, Server, Coffee } from 'lucide-react';
+import { 
+  Home, Building2, GraduationCap, Server, Coffee, 
+  Gamepad2, Laptop, Tv, Upload, MessageCircle,
+  Facebook, Instagram, Video // Social icons
+} from 'lucide-react';
 
 // Icon mapping for client components
 export const iconMap = {
@@ -6,7 +10,15 @@ export const iconMap = {
   Building2,
   GraduationCap,
   Server,
-  Coffee
+  Coffee,
+  Gamepad2,
+  Laptop,
+  Tv,
+  Upload,
+  MessageCircle,
+  Facebook,
+  Instagram,
+  Video
 };
 
 export const siteConfig = {
@@ -179,6 +191,7 @@ export const siteConfig = {
       second: 'Your',
       third: 'Future'
     },
+    subtitle: '#juaranyawifi - Rasakan masa depan internet dengan Perkasa Networks. Latensi rendah, kecepatan simetris, dan enkripsi tingkat militer untuk elit digital.',
     slides: [
       "/hero-1.png",
       "/hero-2.png",
@@ -188,7 +201,77 @@ export const siteConfig = {
     ]
   },
 
-  // 6. COMPANY PROFILE
+  // 6. FEATURES SECTION
+  features: {
+    title: 'Dirancang untuk',
+    highlight: 'Performa',
+    description: 'Infrastruktur kami dibangun dengan teknologi fiber optic generasi terbaru untuk memberikan koneksi paling andal.',
+    items: [
+      {
+        title: 'Optimal untuk Gaming',
+        description: 'Routing prioritas untuk server game populer. Ping rendah, tanpa packet loss.',
+        icon: 'Gamepad2',
+        color: 'text-perkasa-red',
+        colSpan: 'md:col-span-2',
+        bg: 'bg-red-900/10',
+        border: 'hover:border-red-500/50',
+      },
+      {
+        title: 'Kecepatan Simetris',
+        description: 'Kecepatan upload setara dengan download. Sempurna untuk kreator.',
+        icon: 'Upload',
+        color: 'text-perkasa-blue',
+        colSpan: 'md:col-span-1',
+        bg: 'bg-blue-900/10',
+        border: 'hover:border-blue-500/50',
+      },
+      {
+        title: 'Streaming 4K/8K',
+        description: 'Streaming tanpa buffering untuk Netflix, YouTube, dan lainnya.',
+        icon: 'Tv',
+        color: 'text-perkasa-red',
+        colSpan: 'md:col-span-1',
+        bg: 'bg-red-900/10',
+        border: 'hover:border-red-500/50',
+      },
+      {
+        title: 'Bandwidth Terdedikasi',
+        description: 'Tidak dibagi dengan tetangga. Kecepatan Anda terjamin 24/7.',
+        icon: 'Laptop',
+        color: 'text-perkasa-blue',
+        colSpan: 'md:col-span-1',
+        bg: 'bg-blue-900/10',
+        border: 'hover:border-blue-500/50',
+      },
+      {
+        title: 'Support 24 Jam',
+        description: 'Bantuan teknis siap sedia kapanpun. Klik untuk chat WhatsApp sekarang.',
+        icon: 'MessageCircle',
+        color: 'text-green-500',
+        colSpan: 'md:col-span-1',
+        bg: 'bg-green-900/10',
+        border: 'hover:border-green-500/50 cursor-pointer',
+        href: 'https://wa.me/6282225500100',
+      }
+    ]
+  },
+
+  // 7. FOOTER SECTION
+  footer: {
+    socials: [
+      { name: '081252000220', link: 'https://wa.me/6281252000220', icon: 'Video', color: 'text-green-400', bgHover: 'group-hover:bg-green-500/20' },
+      { name: 'perkasa_networks', link: 'https://instagram.com/perkasa_networks', icon: 'Instagram', color: 'text-pink-400', bgHover: 'group-hover:bg-pink-500/20' },
+      { name: 'perkasa networks', link: 'https://facebook.com/perkasa.networks', icon: 'Facebook', color: 'text-blue-400', bgHover: 'group-hover:bg-blue-500/20' },
+      { name: 'perkasa.networks', link: 'https://tiktok.com/@perkasa.networks', icon: 'Video', color: 'text-white', bgHover: 'group-hover:bg-white/20' } // Using Video icon as placeholder for TikTok if not available in lucide-react mapping or use custom SVG in component
+    ],
+    copyright: '© 2020 PT Mega Data Perkasa. All rights reserved.',
+    links: [
+      { name: 'Kebijakan Privasi', href: '#' },
+      { name: 'Syarat Layanan', href: '#' }
+    ]
+  },
+
+  // 8. COMPANY PROFILE
   company: {
     name: 'PT Mega Data Perkasa',
     shortName: 'Perkasa Networks',

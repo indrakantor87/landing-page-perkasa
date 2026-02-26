@@ -1,57 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Gamepad2, Laptop, Tv, Upload, MessageCircle } from 'lucide-react';
 import clsx from 'clsx';
-
-const features = [
-  {
-    title: 'Optimal untuk Gaming',
-    description: 'Routing prioritas untuk server game populer. Ping rendah, tanpa packet loss.',
-    icon: Gamepad2,
-    color: 'text-perkasa-red',
-    colSpan: 'md:col-span-2',
-    bg: 'bg-red-900/10',
-    border: 'hover:border-red-500/50',
-  },
-  {
-    title: 'Kecepatan Simetris',
-    description: 'Kecepatan upload setara dengan download. Sempurna untuk kreator.',
-    icon: Upload,
-    color: 'text-perkasa-blue',
-    colSpan: 'md:col-span-1',
-    bg: 'bg-blue-900/10',
-    border: 'hover:border-blue-500/50',
-  },
-  {
-    title: 'Streaming 4K/8K',
-    description: 'Streaming tanpa buffering untuk Netflix, YouTube, dan lainnya.',
-    icon: Tv,
-    color: 'text-perkasa-red',
-    colSpan: 'md:col-span-1',
-    bg: 'bg-red-900/10',
-    border: 'hover:border-red-500/50',
-  },
-  {
-    title: 'Bandwidth Terdedikasi',
-    description: 'Tidak dibagi dengan tetangga. Kecepatan Anda terjamin 24/7.',
-    icon: Laptop,
-    color: 'text-perkasa-blue',
-    colSpan: 'md:col-span-1',
-    bg: 'bg-blue-900/10',
-    border: 'hover:border-blue-500/50',
-  },
-  {
-    title: 'Support 24 Jam',
-    description: 'Bantuan teknis siap sedia kapanpun. Klik untuk chat WhatsApp sekarang.',
-    icon: MessageCircle,
-    color: 'text-green-500',
-    colSpan: 'md:col-span-1',
-    bg: 'bg-green-900/10',
-    border: 'hover:border-green-500/50 cursor-pointer',
-    href: 'https://wa.me/6282225500100',
-  },
-];
+import { siteConfig, iconMap } from '@/data/site-config';
 
 export default function TechFeatures() {
   return (
@@ -61,17 +12,18 @@ export default function TechFeatures() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-md">
-            Dirancang untuk <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">Performa</span>
+            {siteConfig.features.title} <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">{siteConfig.features.highlight}</span>
           </h2>
           <p className="text-white max-w-2xl mx-auto text-lg drop-shadow-md font-medium">
-            Infrastruktur kami dibangun dengan teknologi fiber optic generasi terbaru untuk memberikan koneksi paling andal.
+            {siteConfig.features.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
+          {siteConfig.features.items.map((feature, index) => {
             const Component = (feature as any).href ? motion.a : motion.div;
             const hrefProps = (feature as any).href ? { href: (feature as any).href, target: '_blank', rel: 'noopener noreferrer' } : {};
+            const Icon = iconMap[feature.icon as keyof typeof iconMap];
             
             return (
               <Component
@@ -88,7 +40,7 @@ export default function TechFeatures() {
                 )}
               >
                 <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-white/5 backdrop-blur-sm">
-                  <feature.icon className={clsx('w-8 h-8', feature.color)} />
+                  {Icon && <Icon className={clsx('w-8 h-8', feature.color)} />}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 drop-shadow-md">{feature.title}</h3>
                 <p className="text-white leading-relaxed font-medium drop-shadow-sm">{feature.description}</p>
