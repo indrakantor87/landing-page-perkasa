@@ -19,7 +19,7 @@ export default function TechFooter() {
           </div>
           
           {/* Contact & Socials Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-1 text-sm text-gray-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-4 md:gap-y-1 text-sm text-gray-300">
             <a href="https://wa.me/6281252000220" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-white transition-colors group whitespace-nowrap">
               <div className="p-1.5 rounded-full bg-white/5 group-hover:bg-green-500/20 transition-colors">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px] text-green-500">
@@ -65,7 +65,7 @@ export default function TechFooter() {
       </div>
 
       {/* Large PERKASA Logo - Trae Style */}
-      <div className="w-full overflow-hidden select-none pointer-events-none mt-0 leading-[0.75] relative h-[35vw] flex items-end justify-center">
+      <div className="w-full overflow-hidden select-none pointer-events-none mt-0 leading-[0.75] relative h-32 md:h-[35vw] flex items-end justify-center">
         <div className="relative w-full h-full scale-[1.5] -translate-y-[15%] opacity-50 mix-blend-overlay">
           <Image 
             src="/footer-1.png" 

@@ -47,7 +47,7 @@ export default function TechHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 select-none"
+          className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 md:mb-8 select-none"
         >
           <motion.span 
             className="inline-block text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.6)] transition-all duration-300 cursor-default"
@@ -74,7 +74,7 @@ export default function TechHero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative w-full max-w-5xl h-64 sm:h-80 md:h-[500px] rounded-2xl overflow-hidden mb-12 border border-white/10 shadow-2xl shadow-blue-900/20 group"
+          className="relative w-full max-w-5xl aspect-video md:h-[500px] rounded-2xl overflow-hidden mb-8 md:mb-12 border border-white/10 shadow-2xl shadow-blue-900/20 group"
         >
           <AnimatePresence mode="wait">
             <motion.div

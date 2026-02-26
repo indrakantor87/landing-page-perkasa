@@ -115,6 +115,7 @@ export default function TechNavbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+            aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -128,9 +129,27 @@ export default function TechNavbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0B0F19]/90 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-[#0F172A]/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-4">
+              <div className="pb-4 border-b border-white/10">
+                <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 px-2">Menu Utama</div>
+                <Link
+                  href="/"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-lg font-medium text-gray-300 hover:text-white transition-colors px-2 py-2"
+                >
+                  Beranda
+                </Link>
+                <Link
+                  href="/about"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-lg font-medium text-gray-300 hover:text-white transition-colors px-2 py-2"
+                >
+                  Tentang Kami
+                </Link>
+              </div>
+
               <div className="pb-4 border-b border-white/10">
                 <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 px-2">Pilihan Paket</div>
                 <div className="grid grid-cols-1 gap-1">
@@ -141,30 +160,37 @@ export default function TechNavbar() {
                       onClick={() => setIsOpen(false)}
                       className="flex items-center gap-3 p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all"
                     >
-                      <pkg.icon size={16} className="text-perkasa-red" />
+                      <pkg.icon size={18} className="text-perkasa-red" />
                       <span className="font-medium">{pkg.name}</span>
                     </Link>
                   ))}
                 </div>
               </div>
 
-              {['Tentang Kami', 'Keunggulan', 'Harga', 'FAQ', 'Kontak'].map((item) => (
+              <div className="pb-4">
                 <Link
-                  key={item}
-                  href={item === 'Tentang Kami' ? '/about' : `/#${item.toLowerCase() === 'keunggulan' ? 'features' : item.toLowerCase() === 'harga' ? 'pricing' : item.toLowerCase() === 'faq' ? 'faq' : 'contact'}`}
+                  href="/#faq"
                   onClick={() => setIsOpen(false)}
-                  className="block text-lg font-medium text-gray-300 hover:text-perkasa-red transition-colors px-2"
+                  className="block text-lg font-medium text-gray-300 hover:text-white transition-colors px-2 py-2"
                 >
-                  {item}
+                  FAQ
                 </Link>
-              ))}
-              <div className="pt-4 flex flex-col gap-3">
-                <Link 
-                  href="#pricing"
+                <Link
+                  href="/#contact"
                   onClick={() => setIsOpen(false)}
-                  className="w-full py-3 rounded-lg bg-gradient-to-r from-perkasa-red to-perkasa-blue text-white font-bold text-center"
+                  className="block text-lg font-medium text-gray-300 hover:text-white transition-colors px-2 py-2"
                 >
-                  Lihat Harga
+                  Kontak
+                </Link>
+              </div>
+
+              <div className="pt-2 flex flex-col gap-3">
+                <Link 
+                  href="#upgrade"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full py-3 rounded-lg bg-gradient-to-r from-perkasa-red to-perkasa-blue text-white font-bold text-center shadow-lg shadow-red-500/20"
+                >
+                  Mulai Sekarang
                 </Link>
               </div>
             </div>
