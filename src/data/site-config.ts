@@ -191,7 +191,7 @@ export const siteConfig = {
       second: 'Your',
       third: 'Future'
     },
-    subtitle: '#juaranyawifi - Rasakan masa depan internet dengan Perkasa Networks. Latensi rendah, kecepatan simetris, dan enkripsi tingkat militer untuk elit digital.',
+    subtitle: '#juaranyawifi - Rasakan masa depan internet dengan Perkasa Networks. Jaringan handal, kecepatan stabil, dan memberikan pelayanan terbaik untuk anda.',
     slides: [
       "/hero-1.png",
       "/hero-2.png",
@@ -205,11 +205,11 @@ export const siteConfig = {
   features: {
     title: 'Dirancang untuk',
     highlight: 'Performa',
-    description: 'Infrastruktur kami dibangun dengan teknologi fiber optic generasi terbaru untuk memberikan koneksi paling andal.',
+    description: 'Infrastruktur kami dibangun dengan teknologi fiber optic generasi terbaru untuk memberikan koneksi yang maksimal.',
     items: [
       {
         title: 'Optimal untuk Gaming',
-        description: 'Routing prioritas untuk server game populer. Ping rendah, tanpa packet loss.',
+        description: 'Routing prioritas untuk server game populer. Ping rendah, minim packet loss.',
         icon: 'Gamepad2',
         color: 'text-perkasa-red',
         colSpan: 'md:col-span-2',
@@ -278,12 +278,12 @@ export const siteConfig = {
     foundedYear: 2020,
     customers: '5000+',
     address: 'Perumahan Kebun Bibit Buah Blok A No 1, Sidokerto, Pati, Jawa Tengah 59111',
-    mapsUrl: 'https://maps.google.com/?q=Perumahan+Kebun+Bibit+Buah+Blok+A+No+1+Sidokerto+Pati',
+    mapsUrl: 'https://maps.app.goo.gl/FHfDjLpTrqNUKr7W8',
     email: 'cs@perkasa.net.id',
-    phone: '+62 812-5200-0220',
+    phone: '+62 812-5200-0220', link: 'https://wa.me/6281252000220',
     description: [
-      'Berawal dari sebuah impian besar, serta pengalaman kerja yang cukup banyak di bidang IT dan sistem komunikasi yang telah berkembang selama lebih dari 10 tahun di berbagai perusahaan lokal maupun nasional maka didirikanlah PT. Mega Data Perkasa dengan nama brand Perkasa Networks yang bergerak dalam semua layanan solusi IT dan Komunikasi (Pengadaan, Jasa, Konsultan, Internet Content/Provider, Instalasi dan Maintenace System).',
-      'Dengan berbekal pengalaman yang telah terlatih, teruji, profesional, kreatif dan memiliki sertifikat tehnis tingkat nasional. kami selalu berusaha meningkatkan mutu dan layanan untuk menjaga kepuasan pelanggan terhadap service yang di berikan oleh Perkasa Networks agar dapat menjadi solusi dengan hasil yang memuaskan.'
+      'Berawal dari sebuah impian besar, serta pengalaman kerja yang cukup banyak di bidang IT dan sistem komunikasi yang telah berkembang selama lebih dari 10 tahun di berbagai perusahaan lokal maupun nasional maka didirikanlah PT. Mega Data Perkasa dengan nama brand Perkasa Networks yang bergerak dalam semua layanan solusi IT dan Komunikasi (Pengadaan, Jasa, Konsultan, Internet Content/Provider, Instalasi dan Maintenance System).',
+      'Dengan berbekal pengalaman yang telah terlatih, teruji, profesional, kreatif dan memiliki sertifikat teknis tingkat nasional. Kami selalu berusaha meningkatkan mutu dan layanan untuk menjaga kepuasan pelanggan terhadap service yang di berikan oleh Perkasa Networks agar dapat menjadi solusi dengan hasil yang memuaskan.'
     ],
     vision: 'Menjadi pelopor ekosistem digital masadepan di Indonesia, yang menghadirkan konektivitas tanpa batas, smart home inovatif, teknologi modern yang mutakhir untuk menciptakan kehidupan yang lebih ramah, cerdas, aman, dan efisien.',
     mission: [
