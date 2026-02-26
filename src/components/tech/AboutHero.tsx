@@ -16,10 +16,10 @@ export default function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Tentang <span className="text-perkasa-red">Kami</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg shadow-black/50">
+            Tentang <span className="text-perkasa-red drop-shadow-lg shadow-black/50">Kami</span>
           </h1>
-          <div className="text-xl text-white max-w-3xl mx-auto leading-relaxed space-y-6">
+          <div className="text-xl text-white max-w-3xl mx-auto leading-relaxed space-y-6 drop-shadow-md shadow-black/80 font-medium">
             {(Array.isArray(siteConfig.company.description) 
               ? siteConfig.company.description 
               : [siteConfig.company.description]

@@ -87,7 +87,7 @@ export default function TechFeatures() {
                   feature.border
                 )}
               >
-                <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-white/5">
+                <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-white/5 backdrop-blur-sm">
                   <feature.icon className={clsx('w-8 h-8', feature.color)} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 drop-shadow-md">{feature.title}</h3>

@@ -1,25 +1,27 @@
 import dynamic from 'next/dynamic';
 import TechNavbar from '@/components/tech/TechNavbar';
 import TechHero from '@/components/tech/TechHero';
-import TechBackground from '@/components/tech/TechBackground';
 import PopupBanner from '@/components/tech/PopupBanner';
 // BottomActionBar di-nonaktifkan
 
-// Dynamic imports for below-fold components with loading skeletons
+// Lazy load components that are not immediately visible
 const TechFeatures = dynamic(() => import('@/components/tech/TechFeatures'), {
-  loading: () => <div className="h-[600px] w-full bg-white/5 animate-pulse" />
+  loading: () => <div className="h-96 w-full bg-transparent" />
 });
 const TechPricing = dynamic(() => import('@/components/tech/TechPricing'), {
-  loading: () => <div className="h-[800px] w-full bg-white/5 animate-pulse" />
+  loading: () => <div className="h-96 w-full bg-transparent" />
 });
 const TechTestimonials = dynamic(() => import('@/components/tech/TechTestimonials'), {
-  loading: () => <div className="h-[400px] w-full bg-white/5 animate-pulse" />
+  loading: () => <div className="h-96 w-full bg-transparent" />
 });
 const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'), {
-  loading: () => <div className="h-[500px] w-full bg-white/5 animate-pulse" />
+  loading: () => <div className="h-96 w-full bg-transparent" />
 });
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
+const TechBackground = dynamic(() => import('@/components/tech/TechBackground'), {
+  ssr: false // Background animation doesn't need SSR
+});
 // Client-only component for WhatsApp button to avoid hydration mismatch
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
 

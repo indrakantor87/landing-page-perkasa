@@ -18,8 +18,8 @@ export default function AboutContent() {
             className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Calendar className="w-12 h-12 text-perkasa-red mx-auto mb-4 drop-shadow-md" />
-            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">{siteConfig.company.foundedYear}</h3>
-            <p className="text-white font-medium">Tahun Berdiri</p>
+            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-md">{siteConfig.company.foundedYear}</h3>
+            <p className="text-white font-medium drop-shadow-sm">Tahun Berdiri</p>
           </motion.div>
           
           <motion.div 
@@ -30,8 +30,8 @@ export default function AboutContent() {
             className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Users className="w-12 h-12 text-perkasa-blue mx-auto mb-4 drop-shadow-md" />
-            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">{siteConfig.company.customers}</h3>
-            <p className="text-white font-medium">Pelanggan Aktif</p>
+            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-md">{siteConfig.company.customers}</h3>
+            <p className="text-white font-medium drop-shadow-sm">Pelanggan Aktif</p>
           </motion.div>
 
           <motion.div 
@@ -42,8 +42,8 @@ export default function AboutContent() {
             className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Award className="w-12 h-12 text-yellow-500 mx-auto mb-4 drop-shadow-md" />
-            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">Resmi</h3>
-            <p className="text-white font-medium">Berizin Kominfo</p>
+            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-md">Resmi</h3>
+            <p className="text-white font-medium drop-shadow-sm">Berizin Kominfo</p>
           </motion.div>
         </div>
 

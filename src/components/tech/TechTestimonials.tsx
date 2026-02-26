@@ -9,8 +9,8 @@ export default function TechTestimonials() {
   return (
     <section className="py-20 relative overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
-        <h2 className="text-3xl font-bold text-white mb-4 drop-shadow-md">Kata Mereka Tentang <span className="text-perkasa-red">Perkasa</span></h2>
-        <p className="text-white drop-shadow-sm font-medium">Bergabung dengan ribuan pelanggan yang telah merasakan kecepatan internet sesungguhnya.</p>
+        <h2 className="text-3xl font-bold text-white mb-4 drop-shadow-lg shadow-black/50">Kata Mereka Tentang <span className="text-perkasa-red drop-shadow-lg shadow-black/50">Perkasa</span></h2>
+        <p className="text-white drop-shadow-md font-medium shadow-black/50">Bergabung dengan ribuan pelanggan yang telah merasakan kecepatan internet sesungguhnya.</p>
       </div>
 
       <div className="relative w-full overflow-hidden">
@@ -37,14 +37,14 @@ export default function TechTestimonials() {
                     <Image src={item.avatar} alt={item.name} fill className="object-cover" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm drop-shadow-sm">{item.name}</h4>
-                    <p className="text-xs text-white font-medium">{item.role}</p>
+                    <h4 className="font-bold text-white text-sm drop-shadow-md shadow-black/50">{item.name}</h4>
+                    <p className="text-xs text-white font-medium drop-shadow-sm shadow-black/50">{item.role}</p>
                   </div>
                 </div>
-                <Quote size={20} className="text-[#00B4D8]/70" />
+                <Quote size={20} className="text-[#00B4D8]/70 drop-shadow-md" />
               </div>
               
-              <p className="text-white text-sm leading-relaxed mb-4 font-medium drop-shadow-sm">"{item.text}"</p>
+              <p className="text-white text-sm leading-relaxed mb-4 font-medium drop-shadow-md shadow-black/50">"{item.text}"</p>
               
               <div className="flex gap-1">
                 {[...Array(item.rating)].map((_, j) => (
