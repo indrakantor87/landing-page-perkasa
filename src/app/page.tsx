@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import InViewMount from '@/components/tech/InViewMount';
 import TechNavbar from '@/components/tech/TechNavbar';
 import TechHero from '@/components/tech/TechHero';
 import PopupBanner from '@/components/tech/PopupBanner';
@@ -45,18 +46,18 @@ export default function Home() {
       <div className="relative z-10">
         <TechNavbar />
         <TechHero />
-        <TechFeatures />
-        <TechPricing />
-        <TechTestimonials />
-        <TechFAQ />
+        <InViewMount><TechFeatures /></InViewMount>
+        <InViewMount><TechPricing /></InViewMount>
+        <InViewMount><TechTestimonials /></InViewMount>
+        <InViewMount><TechFAQ /></InViewMount>
         
         {/* CTA Section */}
-        <TechCTA />
+        <InViewMount><TechCTA /></InViewMount>
 
-        <TechFooter />
+        <InViewMount><TechFooter /></InViewMount>
       </div>
-      <WhatsAppButton />
-      <PopupBanner />
+      <InViewMount placeholderHeight={0}><WhatsAppButton /></InViewMount>
+      <InViewMount placeholderHeight={0}><PopupBanner /></InViewMount>
     </main>
   );
 }

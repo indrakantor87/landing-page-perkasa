@@ -19,7 +19,7 @@ export default function TechNavbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/20 will-change-transform">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/15 backdrop-blur border-b border-white/5 shadow-md shadow-black/10 will-change-transform">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -58,7 +58,7 @@ export default function TechNavbar() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-[#0F172A]/95 border border-white/10 rounded-xl shadow-2xl shadow-black/50 overflow-hidden p-4 grid grid-cols-2 gap-2 z-50 backdrop-blur-xl"
+                          className="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-[#0F172A]/90 border border-white/10 rounded-xl shadow-xl shadow-black/40 overflow-hidden p-4 grid grid-cols-2 gap-2 z-50 backdrop-blur-lg"
                         >
                           {packages.map((pkg) => (
                             <Link 

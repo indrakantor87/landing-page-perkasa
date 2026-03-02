@@ -44,9 +44,9 @@ export default function CoverageMapSection() {
     : '#';
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative min-h-[500px]">
+    <div className="w-full max-w-4xl mx-auto mt-8 bg-black/10 backdrop-blur border border-white/10 rounded-2xl overflow-hidden shadow-xl relative min-h-[500px]">
       {/* Header */}
-      <div className="p-4 border-b border-white/10 bg-black/40 flex justify-between items-center">
+      <div className="p-4 border-b border-white/10 bg-black/30 flex justify-between items-center">
         <h3 className="text-lg font-bold text-white flex items-center gap-2 drop-shadow-md">
           <MapPin className="text-perkasa-red" />
           Cek Area Jangkauan Fiber Optic
@@ -73,7 +73,7 @@ export default function CoverageMapSection() {
                 </div>
               </div>
               
-              <div className="p-4 md:p-6 bg-black/60 w-full flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 backdrop-blur-sm z-10">
+              <div className="p-4 md:p-6 bg-black/40 w-full flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 backdrop-blur-sm z-10">
                 <div className="w-full md:w-auto flex-1">
                   <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">Koordinat Terpilih</label>
                   <div className="text-sm font-mono bg-white/10 text-white p-2.5 rounded-lg border border-white/10 truncate w-full">
@@ -103,7 +103,7 @@ export default function CoverageMapSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-sm z-20"
+              className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm z-20"
             >
               <div className="relative mb-6">
                 <div className="w-24 h-24 border-4 border-white/10 rounded-full"></div>
@@ -120,7 +120,7 @@ export default function CoverageMapSection() {
               key="result"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md p-8 text-center z-20"
+              className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 backdrop-blur p-8 text-center z-20"
             >
               <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mb-6 animate-bounce border border-green-500/30">
                 <CheckCircle2 className="w-12 h-12 text-green-400 drop-shadow-lg" />
