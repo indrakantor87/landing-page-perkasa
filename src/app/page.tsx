@@ -52,7 +52,7 @@ export default function Home() {
 
         <InViewMount><TechFooter /></InViewMount>
       </div>
-      <InViewMount placeholderHeight={0}><WhatsAppButton /></InViewMount>
+      <WhatsAppButton />
       {/* Popup harus muncul setiap refresh, render langsung tanpa penundaan on-view */}
       <PopupBanner />
     </main>
