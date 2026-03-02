@@ -27,7 +27,7 @@
 body {
   /* Option 2: Soft Blue/Sky (Clean & Trustworthy) - MATCHING USER REQUEST (66FFFF/99FFFF vibe) */
   background-color: #020617; /* Fallback */
-  background-image: url('/main-bg5.jpg') !important;
+  background-image: none !important;
   background-attachment: fixed !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;

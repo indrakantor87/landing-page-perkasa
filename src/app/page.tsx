@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import InViewMount from '@/components/tech/InViewMount';
+import TechBackground from '@/components/tech/TechBackground';
 import TechNavbar from '@/components/tech/TechNavbar';
 import TechHero from '@/components/tech/TechHero';
 import PopupBanner from '@/components/tech/PopupBanner';
@@ -40,8 +41,8 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen text-white selection:bg-perkasa-red/30 selection:text-white relative">
-      {/* Global Background - DISABLED to use CSS background image */}
-      {/* <TechBackground /> */}
+      {/* Global Background with smooth fade-in */}
+      <TechBackground />
 
       <div className="relative z-10">
         <TechNavbar />

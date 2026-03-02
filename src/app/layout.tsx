@@ -42,15 +42,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
         style={{
-          backgroundImage: "url('/main-bg5.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          backgroundRepeat: 'no-repeat',
           backgroundColor: '#020617'
         }}
       >
-        <div className="fixed inset-0 bg-black/10 z-[-1] pointer-events-none" />
+        <div className="fixed inset-0 bg-black/5 z-[-1] pointer-events-none" />
         {children}
       </body>
     </html>
