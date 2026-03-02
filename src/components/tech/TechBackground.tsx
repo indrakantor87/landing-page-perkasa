@@ -6,15 +6,15 @@ export default function TechBackground() {
   return (
     <div className="fixed inset-0 z-0">
       <Image
-        src="/main-bg4.jpg"
+        src="/main-bg5.jpg"
         alt="Circuit Background"
         fill
-        className="object-cover opacity-50"
+        className="object-cover opacity-80"
         priority
         sizes="100vw"
         quality={60}
       />
-      <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-black/5 mix-blend-multiply" />
     </div>
   );
 }

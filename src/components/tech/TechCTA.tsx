@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 export default function TechCTA() {
   return (
     <section id="upgrade" className="py-20 relative overflow-hidden bg-transparent">
-      <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-blue-900/20" />
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10 p-8 rounded-3xl bg-black/30 backdrop-blur-md border border-white/10 shadow-2xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

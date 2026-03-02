@@ -27,7 +27,7 @@
 body {
   /* Option 2: Soft Blue/Sky (Clean & Trustworthy) - MATCHING USER REQUEST (66FFFF/99FFFF vibe) */
   background-color: #020617; /* Fallback */
-  background-image: url('/main-bg4.jpg') !important;
+  background-image: url('/main-bg5.jpg') !important;
   background-attachment: fixed !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -36,4 +36,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   min-height: 100vh;
+}
+
+/* Improve performance on mobile by disabling fixed background attachment */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
 }
