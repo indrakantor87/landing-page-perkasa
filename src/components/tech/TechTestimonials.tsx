@@ -34,11 +34,12 @@ export default function TechTestimonials() {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <Image 
-                    src={encodeURI(item.avatar)} 
+                    src={item.avatar} 
                     alt={item.name}
                     width={40}
                     height={40}
                     className="rounded-full object-cover border border-white/20"
+                    unoptimized
                   />
                   <div>
                     <h4 className="font-bold text-white text-sm drop-shadow-md shadow-black/50">{item.name}</h4>
