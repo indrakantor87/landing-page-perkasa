@@ -127,42 +127,42 @@ export const siteConfig = {
       role: 'Pelanggan',
       text: 'Wifi top di Pati, sempat beberapa kali viral. Akhirnya nyoba juga, not bad! Pelayanannya oke sekali dan sangat stay in touch sama pelanggan, marketingnya okee banget.',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=100&auto=format&fit=crop'
+      avatar: '/Nurafia%20Azizah%20Putri.png'
     },
     {
       name: 'Frinckey Adyn',
       role: 'Pelanggan',
       text: 'Jaringan stabil, punya saya jarang ada trobel. Mantabb Perkasa!',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=100&auto=format&fit=crop'
+      avatar: '/Frinckey%20Adyn.png'
     },
     {
       name: 'Rifki Ayyuba',
       role: 'Pelanggan',
       text: 'Wifinya benar-benar juara! The best pokoknya.',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1599566147214-ce487862ea4f?q=80&w=100&auto=format&fit=crop'
+      avatar: '/Rifki%20Ayyuba.png'
     },
     {
       name: 'Pudjiati Nur Muslikha',
       role: 'Pemilik Usaha',
       text: 'Pelayanan bagus, terima kasih sudah support usaha saya. Sejak memakai Perkasa, jaringan internet di tempat usaha bagus dan makin banyak anak muda betah nongkrong.',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop'
+      avatar: '/Pudjiati%20Nur%20Muslikha.png'
     },
     {
       name: 'Festival Ramadhan Pati',
       role: 'Komunitas',
       text: 'Juaranya wifi!',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=100&auto=format&fit=crop'
+      avatar: '/Festival%20ramadhan%20pati.png'
     },
     {
       name: 'ligafutsalpati',
       role: 'Komunitas',
       text: 'Perkasa, wifinya orang Pati!',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=100&auto=format&fit=crop'
+      avatar: '/ligafutsalpati.png'
     }
   ],
 
