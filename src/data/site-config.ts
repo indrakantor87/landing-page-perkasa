@@ -123,39 +123,46 @@ export const siteConfig = {
   // 3. TESTIMONIALS
   testimonials: [
     {
-      name: 'Budi Santoso',
-      role: 'Gamer & Streamer',
-      text: 'Ping stabil banget buat main Valorant, gak pernah RTO lagi. Upload speed simetris jadi live streaming lancar jaya!',
+      name: 'Nurafia Azizah Putri',
+      role: 'Pelanggan',
+      text: 'Wifi top di Pati, sempat beberapa kali viral. Akhirnya nyoba juga, not bad! Pelayanannya oke sekali dan sangat stay in touch sama pelanggan, marketingnya okee banget.',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=100&auto=format&fit=crop'
+      avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=100&auto=format&fit=crop'
     },
     {
-      name: 'Siti Aminah',
-      role: 'Pemilik Cafe',
-      text: 'Paket Cafe-nya mantap. Pelanggan senang wifi kencang, omzet naik karena banyak yang betah nongkrong lama.',
+      name: 'Frinckey Adyn',
+      role: 'Pelanggan',
+      text: 'Jaringan stabil, punya saya jarang ada trobel. Mantabb Perkasa!',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop'
+      avatar: 'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=100&auto=format&fit=crop'
     },
     {
-      name: 'SMK Tunas Bangsa',
-      role: 'Kepala Sekolah',
-      text: 'Ujian online (ANBK) berjalan sangat lancar dengan Paket Sekolah Dedicated. Support teknisnya juga fast respon 24 jam.',
+      name: 'Rifki Ayyuba',
+      role: 'Pelanggan',
+      text: 'Wifinya benar-benar juara! The best pokoknya.',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop'
+      avatar: 'https://images.unsplash.com/photo-1599566147214-ce487862ea4f?q=80&w=100&auto=format&fit=crop'
     },
     {
-      name: 'Rian Pratama',
-      role: 'Freelancer',
-      text: 'Upload file bergiga-giga ke client cepet banget. Harga segini dapet speed simetris itu worth it parah!',
+      name: 'Pudjiati Nur Muslikha',
+      role: 'Pemilik Usaha',
+      text: 'Pelayanan bagus, terima kasih sudah support usaha saya. Sejak memakai Perkasa, jaringan internet di tempat usaha bagus dan makin banyak anak muda betah nongkrong.',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop'
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop'
     },
     {
-      name: 'Dewi Lestari',
-      role: 'Ibu Rumah Tangga',
-      text: 'Anak-anak sekolah online lancar, suami WFH aman, saya streaming drakor juga gak buffering. Paket Home Basic udah cukup banget.',
+      name: 'Festival Ramadhan Pati',
+      role: 'Komunitas',
+      text: 'Juaranya wifi!',
       rating: 5,
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop'
+      avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=100&auto=format&fit=crop'
+    },
+    {
+      name: 'ligafutsalpati',
+      role: 'Komunitas',
+      text: 'Perkasa, wifinya orang Pati!',
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=100&auto=format&fit=crop'
     }
   ],
 
