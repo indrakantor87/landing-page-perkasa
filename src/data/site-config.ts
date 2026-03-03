@@ -127,42 +127,42 @@ export const siteConfig = {
       role: 'Pelanggan',
       text: 'Wifi top di Pati, sempat beberapa kali viral. Akhirnya nyoba juga, not bad! Pelayanannya oke sekali dan sangat stay in touch sama pelanggan, marketingnya okee banget.',
       rating: 5,
-      avatar: '/Nurafia%20Azizah%20Putri.png'
+      avatar: '/Nurafia-Azizah-Putri.png'
     },
     {
       name: 'Frinckey Adyn',
       role: 'Pelanggan',
       text: 'Jaringan stabil, punya saya jarang ada trobel. Mantabb Perkasa!',
       rating: 5,
-      avatar: '/Frinckey%20Adyn.png'
+      avatar: '/Frinckey-Adyn.png'
     },
     {
       name: 'Rifki Ayyuba',
       role: 'Pelanggan',
       text: 'Wifinya benar-benar juara! The best pokoknya.',
       rating: 5,
-      avatar: '/Rifki%20Ayyuba.png'
+      avatar: '/Rifki-Ayyuba.png'
     },
     {
       name: 'Pudjiati Nur Muslikha',
       role: 'Pemilik Usaha',
       text: 'Pelayanan bagus, terima kasih sudah support usaha saya. Sejak memakai Perkasa, jaringan internet di tempat usaha bagus dan makin banyak anak muda betah nongkrong.',
       rating: 5,
-      avatar: '/Pudjiati%20Nur%20Muslikha.png'
+      avatar: '/Pudjiati-Nur-Muslikha.png'
     },
     {
       name: 'Festival Ramadhan Pati',
       role: 'Komunitas',
       text: 'Juaranya wifi!',
       rating: 5,
-      avatar: '/Festival%20ramadhan%20pati.png'
+      avatar: '/Festival-ramadhan-pati.png'
     },
     {
       name: 'ligafutsalpati',
       role: 'Komunitas',
       text: 'Perkasa, wifinya orang Pati!',
       rating: 5,
-      avatar: '/ligafutsalpati.png'
+      avatar: '/liga-futsal-pati.png'
     }
   ],
 
