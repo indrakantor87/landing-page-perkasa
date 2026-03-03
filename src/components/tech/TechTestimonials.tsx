@@ -34,7 +34,13 @@ export default function TechTestimonials() {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20">
-                    <Image src={item.avatar} alt={item.name} fill className="object-cover" />
+                    <Image 
+                      src={item.avatar} 
+                      alt={item.name} 
+                      fill 
+                      className="object-cover" 
+                      sizes="40px"
+                    />
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-sm drop-shadow-md shadow-black/50">{item.name}</h4>
