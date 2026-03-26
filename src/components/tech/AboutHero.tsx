@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { siteConfig } from '@/data/site-config';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function AboutHero() {
+  const { content } = useSiteContent();
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -20,9 +21,9 @@ export default function AboutHero() {
             Tentang <span className="text-perkasa-red drop-shadow-lg shadow-black/50">Kami</span>
           </h1>
           <div className="text-xl text-white max-w-3xl mx-auto leading-relaxed space-y-6 drop-shadow-md shadow-black/80 font-medium">
-            {(Array.isArray(siteConfig.company.description) 
-              ? siteConfig.company.description 
-              : [siteConfig.company.description]
+            {(Array.isArray(content.company.description) 
+              ? content.company.description 
+              : [content.company.description]
             ).map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}

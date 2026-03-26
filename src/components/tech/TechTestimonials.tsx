@@ -3,9 +3,10 @@
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import Image from 'next/image';
-import { siteConfig } from '@/data/site-config';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function TechTestimonials() {
+  const { content } = useSiteContent();
   return (
     <section className="py-20 relative overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
@@ -26,7 +27,7 @@ export default function TechTestimonials() {
             duration: 60 
           }}
         >
-          {[...siteConfig.testimonials, ...siteConfig.testimonials].map((item, i) => (
+          {[...content.testimonials, ...content.testimonials].map((item, i) => (
             <div 
               key={i} 
               className="w-[350px] p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm hover:border-[#00B4D8]/50 transition-colors shadow-lg"
@@ -51,7 +52,7 @@ export default function TechTestimonials() {
                 <Quote size={20} className="text-[#00B4D8]/70 drop-shadow-md" />
               </div>
               
-              <p className="text-white text-sm leading-relaxed mb-4 font-medium drop-shadow-md shadow-black/50">"{item.text}"</p>
+              <p className="text-white text-sm leading-relaxed mb-4 font-medium drop-shadow-md shadow-black/50">&quot;{item.text}&quot;</p>
               
               <div className="flex gap-1">
                 {[...Array(item.rating)].map((_, j) => (

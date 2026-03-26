@@ -3,10 +3,11 @@
 import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
-import { useState } from 'react';
-import { siteConfig, iconMap } from '@/data/site-config';
+import { iconMap } from '@/data/site-config';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function TechPricing() {
+  const { content } = useSiteContent();
   const activeTab = 'home'; // Force only 'home' package
   const HomeIcon = iconMap.Home;
 
@@ -29,30 +30,30 @@ export default function TechPricing() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center gap-3 px-6 py-2 rounded-full bg-black/20 border border-white/10 backdrop-blur-sm mb-4">
             <HomeIcon className="w-5 h-5 text-perkasa-red" />
-            <h3 className="text-xl font-semibold text-white tracking-wide drop-shadow-md">{siteConfig.packages[activeTab].title}</h3>
+            <h3 className="text-xl font-semibold text-white tracking-wide drop-shadow-md">{content.packages[activeTab].title}</h3>
           </div>
           <p 
             className="text-lg max-w-xl mx-auto font-medium drop-shadow-md text-white shadow-black/50"
             style={{ color: '#ffffff', textShadow: '0 4px 6px rgba(0,0,0,0.5)' }}
           >
             <span className="text-white" style={{ color: '#ffffff' }}>
-              {siteConfig.packages[activeTab].desc}
+              {content.packages[activeTab].desc}
             </span>
           </p>
         </div>
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch justify-center">
-          {siteConfig.packages[activeTab].plans.map((plan, index) => (
+          {content.packages[activeTab].plans.map((plan, index) => (
             <div 
               key={plan.name}
               className={`relative flex flex-col p-8 rounded-2xl border backdrop-blur-sm transition-all duration-300 group hover:scale-105 hover:shadow-2xl ${
-                (plan as any).popular 
+                (plan as { popular?: boolean }).popular 
                   ? 'bg-gradient-to-b from-perkasa-red/20 to-black/60 border-perkasa-red/50 shadow-lg shadow-perkasa-red/20' 
                   : 'bg-black/40 border-white/10 hover:border-perkasa-blue/50'
               }`}
             >
-              {(plan as any).popular && (
+              {(plan as { popular?: boolean }).popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg shadow-red-900/50">
                   PALING LARIS
                 </div>
@@ -93,7 +94,7 @@ export default function TechPricing() {
               </ul>
 
               <a
-                href={`https://wa.me/6281252000220?text=Halo,%20saya%20tertarik%20dengan%20${encodeURIComponent(plan.name)}%20(${siteConfig.packages[activeTab].title})`}
+                href={`https://wa.me/6281252000220?text=Halo,%20saya%20tertarik%20dengan%20${encodeURIComponent(plan.name)}%20(${content.packages[activeTab].title})`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-full py-3 rounded-lg font-bold text-center transition-all duration-300 ${

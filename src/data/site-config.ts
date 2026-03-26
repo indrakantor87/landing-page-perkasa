@@ -21,7 +21,7 @@ export const iconMap = {
   Video
 };
 
-export const siteConfig = {
+export const defaultSiteConfig = {
   // 1. ANNOUNCEMENT BAR (Top Bar)
   announcement: {
     active: true,

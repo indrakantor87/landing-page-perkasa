@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, CheckCircle2, Loader2, WifiIcon } from 'lucide-react';
@@ -17,13 +17,8 @@ const MapPicker = dynamic(() => import('./MapPicker'), {
 
 export default function CoverageMapSection() {
   const [step, setStep] = useState<'map' | 'checking' | 'result'>('map');
-  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [location, setLocation] = useState<{ lat: number; lng: number }>({ lat: -6.7490, lng: 111.0400 });
   const [address, setAddress] = useState<string>('Pilih lokasi pada peta...');
-
-  // Set default location on mount
-  useEffect(() => {
-    if (!location) setLocation({ lat: -6.7490, lng: 111.0400 });
-  }, []);
 
   const handleCheck = () => {
     setStep('checking');

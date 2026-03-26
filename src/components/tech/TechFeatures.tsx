@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
-import { siteConfig, iconMap } from '@/data/site-config';
+import { iconMap } from '@/data/site-config';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function TechFeatures() {
+  const { content } = useSiteContent();
   return (
     <section id="features" className="py-24 relative">
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] opacity-20" />
@@ -12,17 +14,18 @@ export default function TechFeatures() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-md">
-            {siteConfig.features.title} <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">{siteConfig.features.highlight}</span>
+            {content.features.title} <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">{content.features.highlight}</span>
           </h2>
           <p className="text-white max-w-2xl mx-auto text-lg drop-shadow-md font-medium">
-            {siteConfig.features.description}
+            {content.features.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {siteConfig.features.items.map((feature, index) => {
-            const Component = (feature as any).href ? motion.a : motion.div;
-            const hrefProps = (feature as any).href ? { href: (feature as any).href, target: '_blank', rel: 'noopener noreferrer' } : {};
+          {content.features.items.map((feature, index) => {
+            const href = (feature as { href?: string }).href;
+            const Component = href ? motion.a : motion.div;
+            const hrefProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : {};
             const Icon = iconMap[feature.icon as keyof typeof iconMap];
             
             return (

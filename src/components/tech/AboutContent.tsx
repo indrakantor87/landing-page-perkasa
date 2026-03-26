@@ -1,10 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { siteConfig } from '@/data/site-config';
 import { CheckCircle2, MapPin, Phone, Mail, Users, Calendar, Award } from 'lucide-react';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function AboutContent() {
+  const { content } = useSiteContent();
   return (
     <section className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +19,7 @@ export default function AboutContent() {
             className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Calendar className="w-12 h-12 text-perkasa-red mx-auto mb-4 drop-shadow-md" />
-            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-md">{siteConfig.company.foundedYear}</h3>
+            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-md">{content.company.foundedYear}</h3>
             <p className="text-white font-medium drop-shadow-sm">Tahun Berdiri</p>
           </motion.div>
           
@@ -30,7 +31,7 @@ export default function AboutContent() {
             className="p-8 rounded-2xl bg-black/40 border border-white/10 text-center backdrop-blur-sm shadow-lg will-change-transform"
           >
             <Users className="w-12 h-12 text-perkasa-blue mx-auto mb-4 drop-shadow-md" />
-            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-md">{siteConfig.company.customers}</h3>
+            <h3 className="text-4xl font-bold text-white mb-2 drop-shadow-md">{content.company.customers}</h3>
             <p className="text-white font-medium drop-shadow-sm">Pelanggan Aktif</p>
           </motion.div>
 
@@ -58,12 +59,12 @@ export default function AboutContent() {
             <h2 className="text-3xl font-bold text-white mb-6 border-l-4 border-perkasa-red pl-4 drop-shadow-md">Visi & Misi</h2>
             <div className="mb-8">
               <h3 className="text-xl font-bold text-white mb-3 drop-shadow-sm">Visi</h3>
-              <p className="text-white leading-relaxed font-medium drop-shadow-sm">{siteConfig.company.vision}</p>
+              <p className="text-white leading-relaxed font-medium drop-shadow-sm">{content.company.vision}</p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-white mb-3 drop-shadow-sm">Misi</h3>
               <ul className="space-y-3">
-                {siteConfig.company.mission.map((item, index) => (
+                {content.company.mission.map((item, index) => (
                   <li key={index} className="flex items-start gap-3 text-white font-medium drop-shadow-sm">
                     <CheckCircle2 className="w-5 h-5 text-[#00B4D8] shrink-0 mt-1 drop-shadow-md" />
                     <span>{item}</span>
@@ -82,7 +83,7 @@ export default function AboutContent() {
           >
             <h2 className="text-2xl font-bold text-white mb-6 drop-shadow-md">Legalitas Perusahaan</h2>
             <ul className="space-y-4">
-              {siteConfig.company.licenses.map((item, index) => (
+              {content.company.licenses.map((item, index) => (
                 <li key={index} className="flex items-center gap-3 text-white font-medium p-3 rounded-lg bg-white/5 border border-white/5 hover:border-[#00B4D8]/30 hover:bg-[#00B4D8]/10 transition-colors shadow-sm">
                   <div className="w-2 h-2 rounded-full bg-[#00B4D8] shadow-[0_0_8px_#00B4D8]" />
                   <span className="drop-shadow-sm">{item}</span>
@@ -106,8 +107,8 @@ export default function AboutContent() {
                 <MapPin className="text-perkasa-red drop-shadow-md" />
               </div>
               <h3 className="font-bold text-white mb-2 text-lg drop-shadow-sm">Kantor Pusat</h3>
-              <p className="text-white text-sm px-4 font-medium leading-relaxed">{siteConfig.company.address}</p>
-              <a href={siteConfig.company.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-[#00B4D8] text-sm mt-3 inline-block hover:underline font-bold drop-shadow-sm">
+              <p className="text-white text-sm px-4 font-medium leading-relaxed">{content.company.address}</p>
+              <a href={content.company.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-[#00B4D8] text-sm mt-3 inline-block hover:underline font-bold drop-shadow-sm">
                 Lihat di Google Maps
               </a>
             </div>
@@ -117,7 +118,7 @@ export default function AboutContent() {
                 <Phone className="text-perkasa-red drop-shadow-md" />
               </div>
               <h3 className="font-bold text-white mb-2 text-lg drop-shadow-sm">Telepon / WhatsApp</h3>
-              <p className="text-white text-sm font-medium">{siteConfig.company.phone}</p>
+              <p className="text-white text-sm font-medium">{content.company.phone}</p>
             </div>
 
             <div className="text-center p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm hover:border-[#00B4D8]/50 transition-colors shadow-lg">
@@ -125,7 +126,7 @@ export default function AboutContent() {
                 <Mail className="text-perkasa-red drop-shadow-md" />
               </div>
               <h3 className="font-bold text-white mb-2 text-lg drop-shadow-sm">Email</h3>
-              <p className="text-white text-sm font-medium">{siteConfig.company.email}</p>
+              <p className="text-white text-sm font-medium">{content.company.email}</p>
             </div>
           </div>
         </motion.div>

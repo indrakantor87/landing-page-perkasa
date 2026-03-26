@@ -2,24 +2,28 @@ import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import TechNavbar from '@/components/tech/TechNavbar';
 import TechBackground from '@/components/tech/TechBackground';
-import { siteConfig } from '@/data/site-config';
+import { defaultSiteConfig } from '@/data/site-config';
 import PackageHero from '@/components/tech/PackageHero';
 import PackageContent from '@/components/tech/PackageContent';
+import { readSiteContent } from '@/lib/site-content';
+import type { SiteContent } from '@/lib/site-content-shared';
 
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
 
-// Helper to get package data
-const getPackageData = (slug: string) => {
+type PackageConfig = (typeof defaultSiteConfig.packages)[keyof typeof defaultSiteConfig.packages]
+
+const getPackageData = (content: SiteContent, slug: string): PackageConfig | null => {
   if (!slug) return null;
   const packageKey = slug.toLowerCase();
-  // @ts-ignore
-  return siteConfig.packages[packageKey];
+  const v = (content.packages as Record<string, unknown>)[packageKey]
+  return v ? (v as PackageConfig) : null;
 };
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { slug } = await Promise.resolve(params); // Ensure params are resolved
-  const pkg = getPackageData(slug);
+  const content = await readSiteContent();
+  const pkg = getPackageData(content, slug);
   
   if (!pkg) {
     return {
@@ -35,7 +39,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function PackagePage({ params }: { params: { slug: string } }) {
   const { slug } = await Promise.resolve(params); // Ensure params are resolved
-  const pkg = getPackageData(slug);
+  const content = await readSiteContent();
+  const pkg = getPackageData(content, slug);
 
   if (!pkg) {
     notFound();
@@ -57,7 +62,7 @@ export default async function PackagePage({ params }: { params: { slug: string }
 }
 
 export async function generateStaticParams() {
-  return Object.keys(siteConfig.packages).map((slug) => ({
+  return Object.keys(defaultSiteConfig.packages).map((slug) => ({
     slug,
   }));
 }

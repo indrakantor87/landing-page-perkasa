@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { siteConfig } from '@/data/site-config';
+import { useSiteContent } from '@/lib/use-site-content';
 
 // Lazy load map section
 const CoverageMapSection = dynamic(() => import('./CoverageMapSection'), {
@@ -14,17 +14,20 @@ const CoverageMapSection = dynamic(() => import('./CoverageMapSection'), {
 });
 
 export default function TechHero() {
+  const { content } = useSiteContent();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = content.hero.slides ?? [];
 
   useEffect(() => {
+    if (slides.length === 0) return;
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % siteConfig.hero.slides.length);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % siteConfig.hero.slides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + siteConfig.hero.slides.length) % siteConfig.hero.slides.length);
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % Math.max(1, slides.length));
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + Math.max(1, slides.length)) % Math.max(1, slides.length));
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center pt-28 overflow-hidden">
@@ -44,7 +47,7 @@ export default function TechHero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-perkasa-red"></span>
           </span>
-          <span className="text-perkasa-red text-sm font-mono tracking-wider font-bold">{siteConfig.hero.badge}</span>
+          <span className="text-perkasa-red text-sm font-mono tracking-wider font-bold">{content.hero.badge}</span>
         </motion.div>
 
         <motion.h1
@@ -57,19 +60,19 @@ export default function TechHero() {
             className="inline-block text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.6)] transition-all duration-300 cursor-default will-change-transform"
             whileHover={{ scale: 1.05 }}
           >
-            {siteConfig.hero.title.first}
+            {content.hero.title.first}
           </motion.span>{" "}
           <motion.span 
             className="inline-block text-perkasa-red drop-shadow-[0_0_20px_rgba(220,38,38,0.6)] hover:drop-shadow-[0_0_35px_rgba(220,38,38,0.9)] transition-all duration-300 cursor-default will-change-transform"
             whileHover={{ scale: 1.05 }}
           >
-            {siteConfig.hero.title.second}
+            {content.hero.title.second}
           </motion.span>{" "}
           <motion.span 
             className="inline-block text-perkasa-blue drop-shadow-[0_0_20px_rgba(37,99,235,0.6)] hover:drop-shadow-[0_0_35px_rgba(37,99,235,0.9)] transition-all duration-300 cursor-default will-change-transform"
             whileHover={{ scale: 1.05 }}
           >
-            {siteConfig.hero.title.third}
+            {content.hero.title.third}
           </motion.span>
         </motion.h1>
 
@@ -90,7 +93,7 @@ export default function TechHero() {
               className="absolute inset-0"
             >
               <Image
-                src={siteConfig.hero.slides[currentSlide]}
+                src={slides[currentSlide] ?? slides[0] ?? '/hero-1.png'}
                 alt="Hero Slideshow"
                 fill
                 className="object-cover"
@@ -122,7 +125,7 @@ export default function TechHero() {
 
           {/* Slideshow Indicators */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-            {siteConfig.hero.slides.map((_, index) => (
+            {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
@@ -140,7 +143,7 @@ export default function TechHero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-xl text-white max-w-2xl mb-12 leading-relaxed font-medium drop-shadow-sm"
         >
-          <span className="font-bold"><span className="text-perkasa-red drop-shadow-md">#</span><span className="text-perkasa-blue drop-shadow-md">juaranya</span><span className="text-perkasa-red drop-shadow-md">wifi</span></span> - Rasakan <span className="text-white font-bold drop-shadow-md">masa depan</span> internet dengan <span className="text-perkasa-red font-bold drop-shadow-md">Perkasa Networks</span>. Latensi rendah, <span className="text-perkasa-blue font-bold drop-shadow-md">kecepatan simetris</span>, dan <span className="text-perkasa-red font-bold drop-shadow-md">enkripsi tingkat militer</span> untuk elit digital.
+          {content.hero.subtitle}
         </motion.p>
 
         <motion.div

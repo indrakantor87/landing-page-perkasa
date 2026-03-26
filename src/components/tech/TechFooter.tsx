@@ -2,10 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { siteConfig, iconMap } from '@/data/site-config';
+import { iconMap } from '@/data/site-config';
 import clsx from 'clsx';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function TechFooter() {
+  const { content } = useSiteContent();
   return (
     <footer id="contact" className="bg-black/20 backdrop-blur-md border-t border-white/10 relative z-10 pt-8 pb-4 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
@@ -24,7 +26,7 @@ export default function TechFooter() {
           
           {/* Contact & Socials Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-3 md:gap-y-1 text-xs text-white drop-shadow-md shadow-black/50">
-            {siteConfig.footer.socials.map((social) => {
+            {content.footer.socials.map((social) => {
               const Icon = iconMap[social.icon as keyof typeof iconMap];
               const isTikTok = social.link.includes('tiktok');
 
@@ -57,9 +59,9 @@ export default function TechFooter() {
 
         {/* Copyright */}
         <div className="pt-4 pb-0 border-t border-white/5 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white font-medium drop-shadow-md shadow-black/50">
-          <p className="mb-0">{siteConfig.footer.copyright}</p>
+          <p className="mb-0">{content.footer.copyright}</p>
           <div className="flex gap-6">
-            {siteConfig.footer.links.map((link) => (
+            {content.footer.links.map((link) => (
               <a key={link.name} href={link.href} className="hover:text-perkasa-red transition-colors">{link.name}</a>
             ))}
           </div>

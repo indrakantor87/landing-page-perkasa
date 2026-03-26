@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MapPin, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import { X, MapPin, CheckCircle2, Loader2 } from 'lucide-react';
 
 // Dynamically import the map component to avoid SSR issues
 const MapPicker = dynamic(() => import('./MapPicker'), {
@@ -21,25 +21,46 @@ interface CoverageCheckModalProps {
 }
 
 export default function CoverageCheckModal({ isOpen, onClose }: CoverageCheckModalProps) {
-  const [step, setStep] = useState<'map' | 'checking' | 'result'>('map');
-  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [address, setAddress] = useState<string>('Memuat lokasi...');
+  type Step = 'map' | 'checking' | 'result'
+  type State = { step: Step; location: { lat: number; lng: number }; address: string }
+  type Action =
+    | { type: 'RESET' }
+    | { type: 'SET_STEP'; step: Step }
+    | { type: 'SET_LOCATION'; location: { lat: number; lng: number } }
 
-  // Reset state when modal opens
+  const initialState: State = {
+    step: 'map',
+    location: { lat: -6.7490, lng: 111.0400 },
+    address: 'Memuat lokasi...',
+  }
+
+  const reducer = (prev: State, action: Action): State => {
+    if (action.type === 'RESET') return initialState
+    if (action.type === 'SET_STEP') return { ...prev, step: action.step }
+    if (action.type === 'SET_LOCATION') {
+      return {
+        ...prev,
+        location: action.location,
+        address: `${action.location.lat.toFixed(6)}, ${action.location.lng.toFixed(6)}`,
+      }
+    }
+    return prev
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   useEffect(() => {
     if (isOpen) {
-      setStep('map');
-      // Set default location if not set yet (Pati, Jawa Tengah)
-      if (!location) setLocation({ lat: -6.7490, lng: 111.0400 });
+      dispatch({ type: 'RESET' })
     }
   }, [isOpen]);
 
   const handleCheck = () => {
-    setStep('checking');
+    dispatch({ type: 'SET_STEP', step: 'checking' })
     
     // Simulate checking process
     setTimeout(() => {
-      setStep('result');
+      dispatch({ type: 'SET_STEP', step: 'result' })
     }, 2000);
   };
 
@@ -48,13 +69,12 @@ export default function CoverageCheckModal({ isOpen, onClose }: CoverageCheckMod
     const safeLat = typeof lat === 'number' && !isNaN(lat) ? lat : 0;
     const safeLng = typeof lng === 'number' && !isNaN(lng) ? lng : 0;
     
-    setLocation({ lat: safeLat, lng: safeLng });
-    setAddress(`${safeLat.toFixed(6)}, ${safeLng.toFixed(6)}`);
+    dispatch({ type: 'SET_LOCATION', location: { lat: safeLat, lng: safeLng } })
   };
 
-  const whatsappLink = location 
-    ? `https://wa.me/6281252000220?text=${encodeURIComponent(`Halo Admin Perkasa Networks, saya ingin cek ketersediaan internet di lokasi ini: https://maps.google.com/?q=${location.lat},${location.lng}`)}`
-    : '#';
+  const whatsappLink = `https://wa.me/6281252000220?text=${encodeURIComponent(
+    `Halo Admin Perkasa Networks, saya ingin cek ketersediaan internet di lokasi ini: https://maps.google.com/?q=${state.location.lat},${state.location.lng}`
+  )}`
 
   return (
     <AnimatePresence>
@@ -92,7 +112,7 @@ export default function CoverageCheckModal({ isOpen, onClose }: CoverageCheckMod
 
               {/* Body */}
               <div className="flex-1 relative min-h-[400px] bg-gray-50">
-                {step === 'map' && (
+                {state.step === 'map' && (
                   <div className="absolute inset-0 flex flex-col">
                     <div className="flex-1 relative">
                       <MapPicker onLocationSelect={handleLocationSelect} />
@@ -107,7 +127,7 @@ export default function CoverageCheckModal({ isOpen, onClose }: CoverageCheckMod
                       <div className="mb-4">
                         <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Koordinat Terpilih</label>
                         <div className="text-sm font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded mt-1 truncate">
-                          {address}
+                          {state.address}
                         </div>
                       </div>
                       <button
@@ -121,7 +141,7 @@ export default function CoverageCheckModal({ isOpen, onClose }: CoverageCheckMod
                   </div>
                 )}
 
-                {step === 'checking' && (
+                {state.step === 'checking' && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-white dark:bg-gray-900 z-20">
                     <div className="relative">
                       <div className="w-20 h-20 border-4 border-gray-200 rounded-full"></div>
@@ -133,7 +153,7 @@ export default function CoverageCheckModal({ isOpen, onClose }: CoverageCheckMod
                   </div>
                 )}
 
-                {step === 'result' && (
+                {state.step === 'result' && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-white dark:bg-gray-900 p-8 text-center z-20">
                     <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6 animate-bounce">
                       <CheckCircle2 className="w-10 h-10 text-green-600" />

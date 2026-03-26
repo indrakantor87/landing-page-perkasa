@@ -4,20 +4,24 @@ import { X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function PopupBanner() {
+  const { content } = useSiteContent();
+  const cfg = content.popupBanner;
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setOpen(true), 600);
+    if (!cfg?.active) return;
+    const timer = setTimeout(() => setOpen(true), Math.max(0, Number(cfg.delayMs ?? 600)));
     return () => clearTimeout(timer);
-  }, []);
+  }, [cfg?.active, cfg?.delayMs]);
 
   const close = () => {
     setOpen(false);
   };
 
-  if (!open) return null;
+  if (!open || !cfg?.active) return null;
 
   return (
     <AnimatePresence>
@@ -50,7 +54,7 @@ export default function PopupBanner() {
           {/* Image wrapper - clean, no scroll */}
           <div className="relative w-full bg-gradient-to-b from-white/5 to-transparent">
             <Image
-              src={'/pop%20up%20banner.jpeg'}
+              src={cfg.imageUrl}
               alt="Promo Perkasa Networks"
               width={1120}
               height={1792}

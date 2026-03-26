@@ -10,8 +10,7 @@ interface PackageHeroProps {
 }
 
 export default function PackageHero({ title, description, iconName }: PackageHeroProps) {
-  // @ts-ignore
-  const Icon = iconMap[iconName] || iconMap.Home; // Default to Home if not found
+  const Icon = iconMap[iconName as keyof typeof iconMap] ?? iconMap.Home;
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">

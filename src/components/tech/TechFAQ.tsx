@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import clsx from 'clsx';
-import { siteConfig } from '@/data/site-config';
+import { useSiteContent } from '@/lib/use-site-content';
 
 export default function TechFAQ() {
+  const { content } = useSiteContent();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -20,7 +21,7 @@ export default function TechFAQ() {
         </div>
 
         <div className="space-y-4">
-          {siteConfig.faqs.map((faq, index) => (
+          {content.faqs.map((faq, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 20 }}
