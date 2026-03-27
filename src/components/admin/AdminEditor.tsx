@@ -4,6 +4,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import type { SiteContent } from '@/lib/site-content-shared'
+type MetricsSummary = {
+  days: Array<{ day: string; visits: number; waClicks: number }>
+  totals: { visits: number; waClicks: number }
+  updatedAt: string
+}
 
 type AdminTab = 'hero' | 'popup' | 'packages' | 'testimonials' | 'advanced'
 
@@ -138,6 +143,23 @@ export default function AdminEditor() {
   const [activePackageKey, setActivePackageKey] = useState<string>('home')
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0)
   const [advancedOpen, setAdvancedOpen] = useState(false)
+  const [metrics, setMetrics] = useState<MetricsSummary | null>(null)
+  const [metricsError, setMetricsError] = useState<string | null>(null)
+  const [startDate, setStartDate] = useState(() => {
+    const d = new Date()
+    d.setDate(d.getDate() - 29)
+    const y = d.getFullYear()
+    const m = String(d.getMonth() + 1).padStart(2, '0')
+    const dd = String(d.getDate()).padStart(2, '0')
+    return `${y}-${m}-${dd}`
+  })
+  const [endDate, setEndDate] = useState(() => {
+    const d = new Date()
+    const y = d.getFullYear()
+    const m = String(d.getMonth() + 1).padStart(2, '0')
+    const dd = String(d.getDate()).padStart(2, '0')
+    return `${y}-${m}-${dd}`
+  })
 
   const parsed = useMemo(() => {
     try {
@@ -172,6 +194,42 @@ export default function AdminEditor() {
       })
     return () => controller.abort()
   }, [router])
+
+  useEffect(() => {
+    const controller = new AbortController()
+    setMetricsError(null)
+    fetch(`/api/admin/metrics?start=${startDate}&end=${endDate}`, { cache: 'no-store', signal: controller.signal })
+      .then(async (r) => {
+        if (r.status === 401) return
+        const data = await r.json().catch(() => null)
+        if (!r.ok) throw new Error((data && (data as any).error) || 'Gagal memuat statistik')
+        setMetrics(data as MetricsSummary)
+      })
+      .catch((e: unknown) => setMetricsError(e instanceof Error ? e.message : String(e)))
+    return () => controller.abort()
+  }, [startDate, endDate])
+
+  const exportExcel = () => {
+    if (!metrics) return
+    const header = `<tr><th style="text-align:left">Tanggal</th><th style="text-align:right">Kunjungan</th><th style="text-align:right">Klik WA</th></tr>`
+    const body = metrics.days
+      .map((d) => `<tr><td>${d.day}</td><td style="text-align:right">${d.visits}</td><td style="text-align:right">${d.waClicks}</td></tr>`)
+      .join('')
+    const totals = `<tr><td><b>Total</b></td><td style="text-align:right"><b>${metrics.totals.visits}</b></td><td style="text-align:right"><b>${metrics.totals.waClicks}</b></td></tr>`
+    const html =
+      `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>` +
+      `<table border="1" cellspacing="0" cellpadding="4">${header}${body}${totals}</table>` +
+      `</body></html>`
+    const blob = new Blob([html], { type: 'application/vnd.ms-excel;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `metrics_${startDate}_to_${endDate}.xls`
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    URL.revokeObjectURL(url)
+  }
 
   const logout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' }).catch(() => {})
@@ -349,22 +407,104 @@ export default function AdminEditor() {
   return (
     <div className="min-h-screen text-white">
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between gap-4 relative z-20">
           <div>
-            <h1 className="text-2xl font-bold">Admin Editor</h1>
-            <p className="text-sm text-white/70 mt-1">Update teks dan gambar landing page</p>
+            <h1 className="text-2xl font-bold text-white drop-shadow">Admin Editor</h1>
+            <p className="text-sm text-white/95 mt-1 drop-shadow">Update teks dan gambar landing page</p>
           </div>
           <div className="flex items-center gap-2">
-            <Link href="/" className="rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-sm font-semibold hover:bg-black/40 transition">
+            <Link
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-white/70 bg-black/60 px-3 py-2 text-sm font-semibold text-white hover:bg-black/80 hover:border-white transition cursor-pointer pointer-events-auto"
+            >
               Lihat Web
             </Link>
-            <button onClick={logout} className="rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-sm font-semibold hover:bg-black/40 transition">
+            <button
+              onClick={logout}
+              className="rounded-lg border border-white/70 bg-black/60 px-3 py-2 text-sm font-semibold text-white hover:bg-black/80 hover:border-white transition cursor-pointer pointer-events-auto"
+            >
               Logout
             </button>
           </div>
         </div>
 
         {error && <div className="rounded-lg bg-red-500/10 text-red-200 border border-red-500/30 px-3 py-2 text-sm">{error}</div>}
+
+        <div className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur p-5 space-y-4">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <div className="text-sm font-bold">Statistik Web</div>
+              <div className="text-xs text-white/60">Kunjungan dan klik WhatsApp (30 hari)</div>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="rounded-lg border border-white/10 bg-black/40 px-2 py-1 text-xs text-white"
+              />
+              <span className="text-xs text-white/60">s/d</span>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="rounded-lg border border-white/10 bg-black/40 px-2 py-1 text-xs text-white"
+              />
+              <button
+                onClick={exportExcel}
+                disabled={!metrics}
+                className="rounded-lg border border-white/10 bg-black/30 px-3 py-1.5 text-xs font-semibold hover:bg-black/40 transition disabled:opacity-60"
+              >
+                Export Excel
+              </button>
+            </div>
+          </div>
+          {metricsError && <div className="text-xs text-amber-200">{metricsError}</div>}
+          {!metrics ? (
+            <div className="text-sm text-white/70">Memuat...</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+                <div className="text-xs text-white/60">Total Kunjungan</div>
+                <div className="text-2xl font-bold">{metrics.totals.visits}</div>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+                <div className="text-xs text-white/60">Total Klik WA</div>
+                <div className="text-2xl font-bold">{metrics.totals.waClicks}</div>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+                <div className="text-xs text-white/60">Rasio Klik</div>
+                <div className="text-2xl font-bold">
+                  {metrics.totals.visits ? Math.round((metrics.totals.waClicks / metrics.totals.visits) * 100) : 0}%
+                </div>
+              </div>
+              <div className="md:col-span-3 rounded-xl border border-white/10 bg-black/20 p-4">
+                <div className="text-xs text-white/60 mb-2">30 Hari Terakhir</div>
+                <div className="flex items-end gap-1 h-28">
+                  {metrics.days.map((d) => {
+                    const v = d.visits
+                    const w = d.waClicks
+                    const maxV = Math.max(...metrics.days.map(x => x.visits), 1)
+                    const maxW = Math.max(...metrics.days.map(x => x.waClicks), 1)
+                    const hv = Math.max(2, Math.round((v / maxV) * 80))
+                    const hw = Math.max(2, Math.round((w / maxW) * 80))
+                    return (
+                      <div key={d.day} className="flex flex-col items-center gap-0.5">
+                        <div className="flex items-end gap-0.5">
+                          <div className="w-2 bg-blue-500" style={{ height: hv }} title={`Visits ${v}`} />
+                          <div className="w-2 bg-green-500" style={{ height: hw }} title={`WA ${w}`} />
+                        </div>
+                        <div className="text-[10px] text-white/60">{d.day.slice(5)}</div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
 
         <div className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur p-5 space-y-4">
           <div className="flex items-center justify-between gap-3">

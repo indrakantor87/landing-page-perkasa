@@ -50,6 +50,11 @@ export default function WhatsAppButton() {
             whileTap={{ scale: 0.9 }}
             className="p-4 bg-[#25D366] rounded-full shadow-2xl shadow-green-500/30 text-white flex items-center justify-center group cursor-pointer hover:shadow-green-500/50 transition-shadow relative"
             aria-label="Chat via WhatsApp"
+            onClick={() => {
+              try {
+                fetch('/api/metrics/wa', { method: 'POST', keepalive: true }).catch(() => {})
+              } catch {}
+            }}
           >
             {/* Pulse Effect */}
             <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 group-hover:opacity-40 duration-1000" />

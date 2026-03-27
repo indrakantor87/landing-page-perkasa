@@ -20,8 +20,9 @@ const TechFAQ = dynamic(() => import('@/components/tech/TechFAQ'), {
 });
 const TechCTA = dynamic(() => import('@/components/tech/TechCTA'));
 const TechFooter = dynamic(() => import('@/components/tech/TechFooter'));
-// Client-only component for WhatsApp button to avoid hydration mismatch
+// Client-only components
 const WhatsAppButton = dynamic(() => import('@/components/tech/WhatsAppButton'));
+const VisitTracker = dynamic(() => import('@/components/analytics/VisitTracker'));
 
 export const metadata = {
   title: 'Perkasa Networks | Connect Your Future',
