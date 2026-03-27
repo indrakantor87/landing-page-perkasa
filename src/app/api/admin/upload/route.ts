@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   if (!(file instanceof File)) return NextResponse.json({ error: 'File tidak ditemukan' }, { status: 400 })
 
   if (!file.type.startsWith('image/')) return NextResponse.json({ error: 'Hanya file gambar yang diizinkan' }, { status: 400 })
-  if (file.size > 8 * 1024 * 1024) return NextResponse.json({ error: 'Ukuran file maksimal 8MB' }, { status: 400 })
+  if (file.size > 15 * 1024 * 1024) return NextResponse.json({ error: 'Ukuran file maksimal 15MB' }, { status: 400 })
 
   const ext = safeExt(file.name)
   if (!ext) return NextResponse.json({ error: 'Ekstensi file tidak didukung' }, { status: 400 })
