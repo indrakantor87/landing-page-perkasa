@@ -213,14 +213,19 @@ export default function AdminEditor() {
       const fd = new FormData()
       fd.set('file', file)
       const r = await fetch('/api/admin/upload', { method: 'POST', body: fd })
-      const data = await r.json().catch(() => ({}))
+      const contentType = r.headers.get('content-type') ?? ''
+      const data = contentType.includes('application/json') ? await r.json().catch(() => null) : null
+      const text = !data ? await r.text().catch(() => '') : ''
       if (r.status === 401) {
         router.push('/admin/login')
         router.refresh()
         return
       }
-      if (!r.ok) throw new Error(data?.error ?? 'Gagal upload')
-      const url = String(data?.url ?? '')
+      if (!r.ok) {
+        const msg = (data && typeof data === 'object' && 'error' in data ? String((data as { error?: unknown }).error) : '') || text || `Gagal upload (HTTP ${r.status})`
+        throw new Error(msg)
+      }
+      const url = String((data as { url?: unknown } | null)?.url ?? '')
       setUploadUrl(url)
       if (url) navigator.clipboard?.writeText(url).catch(() => {})
       if (url && applyUrl) applyUrl(url)
