@@ -10,7 +10,7 @@ type MetricsSummary = {
   updatedAt: string
 }
 
-type AdminTab = 'hero' | 'popup' | 'packages' | 'testimonials' | 'advanced'
+type AdminTab = 'hero' | 'popup' | 'packages' | 'testimonials' | 'sections' | 'features' | 'company' | 'footer' | 'advanced'
 
 type PopupBanner = {
   active: boolean
@@ -201,8 +201,11 @@ export default function AdminEditor() {
     fetch(`/api/admin/metrics?start=${startDate}&end=${endDate}`, { cache: 'no-store', signal: controller.signal })
       .then(async (r) => {
         if (r.status === 401) return
-        const data = await r.json().catch(() => null)
-        if (!r.ok) throw new Error((data && (data as any).error) || 'Gagal memuat statistik')
+        const data = (await r.json().catch(() => null)) as { error?: string } | MetricsSummary | null
+        if (!r.ok) {
+          const message = data && typeof data === 'object' && 'error' in data ? String(data.error ?? '') : ''
+          throw new Error(message || 'Gagal memuat statistik')
+        }
         setMetrics(data as MetricsSummary)
       })
       .catch((e: unknown) => setMetricsError(e instanceof Error ? e.message : String(e)))
@@ -325,6 +328,13 @@ export default function AdminEditor() {
     })
   }
 
+  const setNavigation = (updater: (navigation: SiteContent['navigation']) => SiteContent['navigation']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, navigation: updater(prev.navigation) }
+    })
+  }
+
   const setPackages = (updater: (packages: SiteContent['packages']) => SiteContent['packages']) => {
     setContent((prev) => {
       if (!prev) return prev
@@ -336,6 +346,69 @@ export default function AdminEditor() {
     setContent((prev) => {
       if (!prev) return prev
       return { ...prev, testimonials: updater(prev.testimonials) }
+    })
+  }
+
+  const setFeatures = (updater: (features: SiteContent['features']) => SiteContent['features']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, features: updater(prev.features) }
+    })
+  }
+
+  const setFooter = (updater: (footer: SiteContent['footer']) => SiteContent['footer']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, footer: updater(prev.footer) }
+    })
+  }
+
+  const setCompany = (updater: (company: SiteContent['company']) => SiteContent['company']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, company: updater(prev.company) }
+    })
+  }
+
+  const setPricingSection = (updater: (section: SiteContent['pricingSection']) => SiteContent['pricingSection']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, pricingSection: updater(prev.pricingSection) }
+    })
+  }
+
+  const setPackageSection = (updater: (section: SiteContent['packageSection']) => SiteContent['packageSection']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, packageSection: updater(prev.packageSection) }
+    })
+  }
+
+  const setTestimonialSection = (updater: (section: SiteContent['testimonialSection']) => SiteContent['testimonialSection']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, testimonialSection: updater(prev.testimonialSection) }
+    })
+  }
+
+  const setFaqSection = (updater: (section: SiteContent['faqSection']) => SiteContent['faqSection']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, faqSection: updater(prev.faqSection) }
+    })
+  }
+
+  const setCtaSection = (updater: (section: SiteContent['ctaSection']) => SiteContent['ctaSection']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, ctaSection: updater(prev.ctaSection) }
+    })
+  }
+
+  const setAboutSection = (updater: (section: SiteContent['aboutSection']) => SiteContent['aboutSection']) => {
+    setContent((prev) => {
+      if (!prev) return prev
+      return { ...prev, aboutSection: updater(prev.aboutSection) }
     })
   }
 
@@ -530,8 +603,8 @@ export default function AdminEditor() {
 
         <div className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur p-5 space-y-4">
           <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              {(['hero', 'popup', 'packages', 'testimonials'] as AdminTab[]).map((k) => (
+            <div className="flex flex-wrap items-center gap-2">
+              {(['hero', 'popup', 'packages', 'testimonials', 'sections', 'features', 'company', 'footer'] as AdminTab[]).map((k) => (
                 <button
                   key={k}
                   onClick={() => setTab(k)}
@@ -539,7 +612,21 @@ export default function AdminEditor() {
                     tab === k ? 'bg-perkasa-blue text-white' : 'border border-white/10 bg-black/30 text-white/80 hover:bg-black/40'
                   }`}
                 >
-                  {k === 'hero' ? 'Hero' : k === 'popup' ? 'Popup Banner' : k === 'packages' ? 'Packages' : 'Testimonials'}
+                  {k === 'hero'
+                    ? 'Hero'
+                    : k === 'popup'
+                      ? 'Popup Banner'
+                      : k === 'packages'
+                        ? 'Packages'
+                        : k === 'testimonials'
+                          ? 'Testimonials'
+                          : k === 'sections'
+                            ? 'Section Copy'
+                            : k === 'features'
+                              ? 'Fitur'
+                              : k === 'company'
+                                ? 'Company'
+                                : 'Footer'}
                 </button>
               ))}
             </div>
@@ -814,6 +901,236 @@ export default function AdminEditor() {
                 </div>
               )}
 
+              {tab === 'sections' && (
+                <div className="space-y-6">
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Navigasi</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Label Beranda" value={String(content.navigation.homeLabel ?? '')} onChange={(v) => setNavigation((nav) => ({ ...nav, homeLabel: v }))} />
+                      <Field label="Label Tentang" value={String(content.navigation.aboutLabel ?? '')} onChange={(v) => setNavigation((nav) => ({ ...nav, aboutLabel: v }))} />
+                      <Field label="Label Paket" value={String(content.navigation.packagesLabel ?? '')} onChange={(v) => setNavigation((nav) => ({ ...nav, packagesLabel: v }))} />
+                      <Field label="Label FAQ" value={String(content.navigation.faqLabel ?? '')} onChange={(v) => setNavigation((nav) => ({ ...nav, faqLabel: v }))} />
+                      <Field label="Label Kontak" value={String(content.navigation.contactLabel ?? '')} onChange={(v) => setNavigation((nav) => ({ ...nav, contactLabel: v }))} />
+                      <Field label="Label Tombol Utama" value={String(content.navigation.primaryCtaLabel ?? '')} onChange={(v) => setNavigation((nav) => ({ ...nav, primaryCtaLabel: v }))} />
+                      <Field label="Link Tombol Utama" value={String(content.navigation.primaryCtaHref ?? '')} onChange={(v) => setNavigation((nav) => ({ ...nav, primaryCtaHref: v }))} />
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Section Pricing</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Judul Pricing" value={String(content.pricingSection.title ?? '')} onChange={(v) => setPricingSection((section) => ({ ...section, title: v }))} />
+                      <Field label="Highlight Pricing" value={String(content.pricingSection.highlight ?? '')} onChange={(v) => setPricingSection((section) => ({ ...section, highlight: v }))} />
+                      <Field label="Badge Popular" value={String(content.pricingSection.popularBadge ?? '')} onChange={(v) => setPricingSection((section) => ({ ...section, popularBadge: v }))} />
+                      <Field label="Label Tombol" value={String(content.pricingSection.ctaLabel ?? '')} onChange={(v) => setPricingSection((section) => ({ ...section, ctaLabel: v }))} />
+                      <Field label="Label Hubungi Kami" value={String(content.pricingSection.callUsLabel ?? '')} onChange={(v) => setPricingSection((section) => ({ ...section, callUsLabel: v }))} />
+                    </div>
+                    <TextArea label="Deskripsi Pricing" value={String(content.pricingSection.description ?? '')} onChange={(v) => setPricingSection((section) => ({ ...section, description: v }))} rows={3} />
+                    <TextArea label="Disclaimer Pricing" value={String(content.pricingSection.disclaimer ?? '')} onChange={(v) => setPricingSection((section) => ({ ...section, disclaimer: v }))} rows={3} />
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Section Detail Paket</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Badge Popular" value={String(content.packageSection.popularBadge ?? '')} onChange={(v) => setPackageSection((section) => ({ ...section, popularBadge: v }))} />
+                      <Field label="Label Tombol" value={String(content.packageSection.ctaLabel ?? '')} onChange={(v) => setPackageSection((section) => ({ ...section, ctaLabel: v }))} />
+                      <Field label="Label Hubungi Kami" value={String(content.packageSection.callUsLabel ?? '')} onChange={(v) => setPackageSection((section) => ({ ...section, callUsLabel: v }))} />
+                    </div>
+                    <TextArea label="Disclaimer Detail Paket" value={String(content.packageSection.disclaimer ?? '')} onChange={(v) => setPackageSection((section) => ({ ...section, disclaimer: v }))} rows={3} />
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Section Testimonials</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Judul" value={String(content.testimonialSection.title ?? '')} onChange={(v) => setTestimonialSection((section) => ({ ...section, title: v }))} />
+                      <Field label="Highlight" value={String(content.testimonialSection.highlight ?? '')} onChange={(v) => setTestimonialSection((section) => ({ ...section, highlight: v }))} />
+                    </div>
+                    <TextArea label="Deskripsi" value={String(content.testimonialSection.description ?? '')} onChange={(v) => setTestimonialSection((section) => ({ ...section, description: v }))} rows={3} />
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Section FAQ</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Judul" value={String(content.faqSection.title ?? '')} onChange={(v) => setFaqSection((section) => ({ ...section, title: v }))} />
+                      <Field label="Highlight" value={String(content.faqSection.highlight ?? '')} onChange={(v) => setFaqSection((section) => ({ ...section, highlight: v }))} />
+                    </div>
+                    <TextArea label="Deskripsi" value={String(content.faqSection.description ?? '')} onChange={(v) => setFaqSection((section) => ({ ...section, description: v }))} rows={3} />
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Section CTA</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Judul" value={String(content.ctaSection.title ?? '')} onChange={(v) => setCtaSection((section) => ({ ...section, title: v }))} />
+                      <Field label="Highlight" value={String(content.ctaSection.highlight ?? '')} onChange={(v) => setCtaSection((section) => ({ ...section, highlight: v }))} />
+                      <Field label="Label Tombol" value={String(content.ctaSection.buttonLabel ?? '')} onChange={(v) => setCtaSection((section) => ({ ...section, buttonLabel: v }))} />
+                    </div>
+                    <TextArea label="Deskripsi CTA" value={String(content.ctaSection.description ?? '')} onChange={(v) => setCtaSection((section) => ({ ...section, description: v }))} rows={3} />
+                    <TextArea label="Pesan WhatsApp CTA" value={String(content.ctaSection.buttonMessage ?? '')} onChange={(v) => setCtaSection((section) => ({ ...section, buttonMessage: v }))} rows={2} />
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Section About</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Judul About" value={String(content.aboutSection.title ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, title: v }))} />
+                      <Field label="Highlight About" value={String(content.aboutSection.highlight ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, highlight: v }))} />
+                      <Field label="Label Tahun Berdiri" value={String(content.aboutSection.foundedLabel ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, foundedLabel: v }))} />
+                      <Field label="Label Pelanggan" value={String(content.aboutSection.customersLabel ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, customersLabel: v }))} />
+                      <Field label="Status Legal" value={String(content.aboutSection.legalStatusTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, legalStatusTitle: v }))} />
+                      <Field label="Deskripsi Legal" value={String(content.aboutSection.legalStatusDescription ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, legalStatusDescription: v }))} />
+                      <Field label="Judul Visi Misi" value={String(content.aboutSection.visionMissionTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, visionMissionTitle: v }))} />
+                      <Field label="Label Visi" value={String(content.aboutSection.visionTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, visionTitle: v }))} />
+                      <Field label="Label Misi" value={String(content.aboutSection.missionTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, missionTitle: v }))} />
+                      <Field label="Judul Legalitas" value={String(content.aboutSection.legalTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, legalTitle: v }))} />
+                      <Field label="Judul Kontak" value={String(content.aboutSection.contactTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, contactTitle: v }))} />
+                      <Field label="Judul Alamat" value={String(content.aboutSection.addressTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, addressTitle: v }))} />
+                      <Field label="Label Link Maps" value={String(content.aboutSection.mapsLabel ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, mapsLabel: v }))} />
+                      <Field label="Judul Telepon" value={String(content.aboutSection.phoneTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, phoneTitle: v }))} />
+                      <Field label="Judul Email" value={String(content.aboutSection.emailTitle ?? '')} onChange={(v) => setAboutSection((section) => ({ ...section, emailTitle: v }))} />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {tab === 'features' && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Field label="Judul" value={String(content.features.title ?? '')} onChange={(v) => setFeatures((features) => ({ ...features, title: v }))} />
+                    <Field label="Highlight" value={String(content.features.highlight ?? '')} onChange={(v) => setFeatures((features) => ({ ...features, highlight: v }))} />
+                    <Field label="Deskripsi" value={String(content.features.description ?? '')} onChange={(v) => setFeatures((features) => ({ ...features, description: v }))} />
+                  </div>
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-3">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="text-sm font-bold">Item Fitur</div>
+                      <button
+                        onClick={() =>
+                          setFeatures((features) => ({
+                            ...features,
+                            items: [
+                              ...(features.items ?? []),
+                              {
+                                title: 'Fitur Baru',
+                                description: 'Deskripsi fitur baru',
+                                icon: 'Home',
+                                color: 'text-perkasa-red',
+                                colSpan: 'md:col-span-1',
+                                bg: 'bg-red-900/10',
+                                border: 'hover:border-red-500/50',
+                              },
+                            ],
+                          }))
+                        }
+                        className="rounded-lg border border-white/10 bg-black/30 px-3 py-1.5 text-sm font-semibold hover:bg-black/40 transition"
+                      >
+                        Tambah Fitur
+                      </button>
+                    </div>
+                    <div className="space-y-4">
+                      {content.features.items.map((item, idx) => (
+                        <div key={`${item.title}-${idx}`} className="rounded-xl border border-white/10 bg-black/30 p-4 space-y-3">
+                          <div className="flex items-center justify-between gap-3">
+                            <div className="text-sm font-bold">{item.title || `Fitur ${idx + 1}`}</div>
+                            <button
+                              onClick={() =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.filter((_, i) => i !== idx),
+                                }))
+                              }
+                              className="rounded-lg border border-white/10 bg-black/30 px-3 py-1.5 text-sm font-semibold hover:bg-black/40 transition"
+                            >
+                              Hapus
+                            </button>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <Field
+                              label="Judul"
+                              value={String(item.title ?? '')}
+                              onChange={(v) =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.map((feature, i) => (i === idx ? { ...feature, title: v } : feature)),
+                                }))
+                              }
+                            />
+                            <Field
+                              label="Icon"
+                              value={String(item.icon ?? '')}
+                              onChange={(v) =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.map((feature, i) => (i === idx ? { ...feature, icon: v } : feature)),
+                                }))
+                              }
+                            />
+                            <Field
+                              label="Color Class"
+                              value={String(item.color ?? '')}
+                              onChange={(v) =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.map((feature, i) => (i === idx ? { ...feature, color: v } : feature)),
+                                }))
+                              }
+                            />
+                            <Field
+                              label="ColSpan Class"
+                              value={String(item.colSpan ?? '')}
+                              onChange={(v) =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.map((feature, i) => (i === idx ? { ...feature, colSpan: v } : feature)),
+                                }))
+                              }
+                            />
+                            <Field
+                              label="Background Class"
+                              value={String(item.bg ?? '')}
+                              onChange={(v) =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.map((feature, i) => (i === idx ? { ...feature, bg: v } : feature)),
+                                }))
+                              }
+                            />
+                            <Field
+                              label="Border Class"
+                              value={String(item.border ?? '')}
+                              onChange={(v) =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.map((feature, i) => (i === idx ? { ...feature, border: v } : feature)),
+                                }))
+                              }
+                            />
+                            <Field
+                              label="Link (opsional)"
+                              value={String((item as { href?: string }).href ?? '')}
+                              onChange={(v) =>
+                                setFeatures((features) => ({
+                                  ...features,
+                                  items: features.items.map((feature, i) => (i === idx ? { ...feature, href: v || undefined } : feature)),
+                                }))
+                              }
+                            />
+                          </div>
+                          <TextArea
+                            label="Deskripsi"
+                            value={String(item.description ?? '')}
+                            onChange={(v) =>
+                              setFeatures((features) => ({
+                                ...features,
+                                items: features.items.map((feature, i) => (i === idx ? { ...feature, description: v } : feature)),
+                              }))
+                            }
+                            rows={3}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {tab === 'testimonials' && (
                 <div className="space-y-4">
                   <div className="flex flex-wrap items-center gap-2">
@@ -936,6 +1253,154 @@ export default function AdminEditor() {
                       />
                     </div>
                   )}
+                </div>
+              )}
+
+              {tab === 'company' && (
+                <div className="space-y-6">
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Profil Perusahaan</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Field label="Nama Perusahaan" value={String(content.company.name ?? '')} onChange={(v) => setCompany((company) => ({ ...company, name: v }))} />
+                      <Field label="Nama Brand" value={String(content.company.shortName ?? '')} onChange={(v) => setCompany((company) => ({ ...company, shortName: v }))} />
+                      <Field label="Tahun Berdiri" value={String(content.company.foundedYear ?? '')} onChange={(v) => setCompany((company) => ({ ...company, foundedYear: asNumber(v, new Date().getFullYear()) }))} />
+                      <Field label="Jumlah Pelanggan" value={String(content.company.customers ?? '')} onChange={(v) => setCompany((company) => ({ ...company, customers: v }))} />
+                      <Field label="Email" value={String(content.company.email ?? '')} onChange={(v) => setCompany((company) => ({ ...company, email: v }))} />
+                      <Field label="Telepon / WA" value={String(content.company.phone ?? '')} onChange={(v) => setCompany((company) => ({ ...company, phone: v }))} />
+                      <Field label="Link Maps" value={String(content.company.mapsUrl ?? '')} onChange={(v) => setCompany((company) => ({ ...company, mapsUrl: v }))} />
+                    </div>
+                    <TextArea label="Alamat" value={String(content.company.address ?? '')} onChange={(v) => setCompany((company) => ({ ...company, address: v }))} rows={3} />
+                    <TextArea
+                      label="Deskripsi About (1 paragraf = 1 baris)"
+                      value={(Array.isArray(content.company.description) ? content.company.description : [content.company.description]).join('\n')}
+                      onChange={(v) =>
+                        setCompany((company) => ({
+                          ...company,
+                          description: v
+                            .split('\n')
+                            .map((item) => item.trim())
+                            .filter(Boolean),
+                        }))
+                      }
+                      rows={5}
+                    />
+                    <TextArea label="Visi" value={String(content.company.vision ?? '')} onChange={(v) => setCompany((company) => ({ ...company, vision: v }))} rows={4} />
+                    <TextArea
+                      label="Misi (1 baris = 1 item)"
+                      value={(content.company.mission ?? []).join('\n')}
+                      onChange={(v) =>
+                        setCompany((company) => ({
+                          ...company,
+                          mission: v
+                            .split('\n')
+                            .map((item) => item.trim())
+                            .filter(Boolean),
+                        }))
+                      }
+                      rows={6}
+                    />
+                    <TextArea
+                      label="Legalitas (1 baris = 1 item)"
+                      value={(content.company.licenses ?? []).join('\n')}
+                      onChange={(v) =>
+                        setCompany((company) => ({
+                          ...company,
+                          licenses: v
+                            .split('\n')
+                            .map((item) => item.trim())
+                            .filter(Boolean),
+                        }))
+                      }
+                      rows={6}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {tab === 'footer' && (
+                <div className="space-y-6">
+                  <div className="rounded-xl border border-white/10 bg-black/20 p-4 space-y-4">
+                    <div className="text-sm font-bold">Footer</div>
+                    <TextArea label="Copyright" value={String(content.footer.copyright ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, copyright: v }))} rows={2} />
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="text-sm font-bold">Social Links</div>
+                        <button
+                          onClick={() =>
+                            setFooter((footer) => ({
+                              ...footer,
+                              socials: [
+                                ...(footer.socials ?? []),
+                                { name: 'Social Baru', link: 'https://', icon: 'MessageCircle', color: 'text-white', bgHover: 'group-hover:bg-white/20' },
+                              ],
+                            }))
+                          }
+                          className="rounded-lg border border-white/10 bg-black/30 px-3 py-1.5 text-sm font-semibold hover:bg-black/40 transition"
+                        >
+                          Tambah Social
+                        </button>
+                      </div>
+                      {(content.footer.socials ?? []).map((social, idx) => (
+                        <div key={`${social.name}-${idx}`} className="rounded-xl border border-white/10 bg-black/30 p-4 space-y-3">
+                          <div className="flex items-center justify-between gap-3">
+                            <div className="text-sm font-bold">{social.name || `Social ${idx + 1}`}</div>
+                            <button
+                              onClick={() =>
+                                setFooter((footer) => ({
+                                  ...footer,
+                                  socials: footer.socials.filter((_, i) => i !== idx),
+                                }))
+                              }
+                              className="rounded-lg border border-white/10 bg-black/30 px-3 py-1.5 text-sm font-semibold hover:bg-black/40 transition"
+                            >
+                              Hapus
+                            </button>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <Field label="Nama" value={String(social.name ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, socials: footer.socials.map((item, i) => (i === idx ? { ...item, name: v } : item)) }))} />
+                            <Field label="Link" value={String(social.link ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, socials: footer.socials.map((item, i) => (i === idx ? { ...item, link: v } : item)) }))} />
+                            <Field label="Icon" value={String(social.icon ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, socials: footer.socials.map((item, i) => (i === idx ? { ...item, icon: v } : item)) }))} />
+                            <Field label="Color Class" value={String(social.color ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, socials: footer.socials.map((item, i) => (i === idx ? { ...item, color: v } : item)) }))} />
+                            <Field label="Hover Class" value={String(social.bgHover ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, socials: footer.socials.map((item, i) => (i === idx ? { ...item, bgHover: v } : item)) }))} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="text-sm font-bold">Footer Links</div>
+                        <button
+                          onClick={() =>
+                            setFooter((footer) => ({
+                              ...footer,
+                              links: [...(footer.links ?? []), { name: 'Link Baru', href: '#' }],
+                            }))
+                          }
+                          className="rounded-lg border border-white/10 bg-black/30 px-3 py-1.5 text-sm font-semibold hover:bg-black/40 transition"
+                        >
+                          Tambah Link
+                        </button>
+                      </div>
+                      {(content.footer.links ?? []).map((link, idx) => (
+                        <div key={`${link.name}-${idx}`} className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-3 items-end rounded-xl border border-white/10 bg-black/30 p-4">
+                          <Field label="Label" value={String(link.name ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, links: footer.links.map((item, i) => (i === idx ? { ...item, name: v } : item)) }))} />
+                          <Field label="Href" value={String(link.href ?? '')} onChange={(v) => setFooter((footer) => ({ ...footer, links: footer.links.map((item, i) => (i === idx ? { ...item, href: v } : item)) }))} />
+                          <button
+                            onClick={() =>
+                              setFooter((footer) => ({
+                                ...footer,
+                                links: footer.links.filter((_, i) => i !== idx),
+                              }))
+                            }
+                            className="rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-sm font-semibold hover:bg-black/40 transition"
+                          >
+                            Hapus
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

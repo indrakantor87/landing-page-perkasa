@@ -30,6 +30,16 @@ export const defaultSiteConfig = {
     link: '#pricing', // Optional link when clicked
   },
 
+  navigation: {
+    homeLabel: 'Beranda',
+    aboutLabel: 'Tentang Kami',
+    packagesLabel: 'Pilihan Paket',
+    faqLabel: 'FAQ',
+    contactLabel: 'Kontak',
+    primaryCtaLabel: 'Mulai Sekarang',
+    primaryCtaHref: '#upgrade',
+  },
+
   // 2. PRICING PACKAGES
   packages: {
     home: {
@@ -166,6 +176,31 @@ export const defaultSiteConfig = {
     }
   ],
 
+  pricingSection: {
+    title: 'Pilih Paket',
+    highlight: 'Sesuai Kebutuhan',
+    description: 'Solusi internet terbaik untuk rumah, bisnis, hingga korporasi dengan kecepatan stabil dan harga terjangkau.',
+    popularBadge: 'PALING LARIS',
+    ctaLabel: 'Pilih Paket',
+    callUsLabel: 'Hubungi Kami',
+    disclaimer:
+      '*Harga sudah termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih. Ketersediaan jaringan fiber optic bergantung pada lokasi.',
+  },
+
+  packageSection: {
+    popularBadge: 'PALING LARIS',
+    ctaLabel: 'Pilih Paket',
+    callUsLabel: 'Hubungi Kami',
+    disclaimer:
+      '*Harga sudah termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih. Ketersediaan jaringan fiber optic bergantung pada lokasi.',
+  },
+
+  testimonialSection: {
+    title: 'Kata Mereka Tentang',
+    highlight: 'Perkasa',
+    description: 'Bergabung dengan ribuan pelanggan yang telah merasakan kecepatan internet sesungguhnya.',
+  },
+
   // 4. FAQ
   faqs: [
     {
@@ -189,6 +224,12 @@ export const defaultSiteConfig = {
       answer: 'TIDAK ADA. Semua paket internet Perkasa Networks adalah TRUE UNLIMITED tanpa batasan kuota (FUP). Anda bebas download/upload sepuasnya.',
     }
   ],
+
+  faqSection: {
+    title: 'Pertanyaan',
+    highlight: 'Umum',
+    description: 'Jawaban untuk hal-hal yang sering ditanyakan',
+  },
 
   // 5. HERO SLIDESHOW
   hero: {
@@ -278,6 +319,14 @@ export const defaultSiteConfig = {
     ]
   },
 
+  ctaSection: {
+    title: 'Siap untuk',
+    highlight: 'Upgrade?',
+    description: 'Bergabunglah dengan jaringan masa depan, tersedia hari ini. Rasakan kecepatan tanpa batas.',
+    buttonLabel: 'Pasang Sekarang',
+    buttonMessage: 'Halo, saya ingin berlangganan internet Perkasa Networks',
+  },
+
   // 8. COMPANY PROFILE
   company: {
     name: 'PT Mega Data Perkasa',
@@ -309,5 +358,23 @@ export const defaultSiteConfig = {
       'AKTA PENDIRIAN No. 26 17 Desember 2020',
       'Merk Terdaftar IDM001076147'
     ]
+  },
+
+  aboutSection: {
+    title: 'Tentang',
+    highlight: 'Kami',
+    foundedLabel: 'Tahun Berdiri',
+    customersLabel: 'Pelanggan Aktif',
+    legalStatusTitle: 'Resmi',
+    legalStatusDescription: 'Berizin Kominfo',
+    visionMissionTitle: 'Visi & Misi',
+    visionTitle: 'Visi',
+    missionTitle: 'Misi',
+    legalTitle: 'Legalitas Perusahaan',
+    contactTitle: 'Hubungi Kami',
+    addressTitle: 'Kantor Pusat',
+    mapsLabel: 'Lihat di Google Maps',
+    phoneTitle: 'Telepon / WhatsApp',
+    emailTitle: 'Email',
   }
 };

@@ -24,9 +24,37 @@ export function useSiteContent() {
         const merged: SiteContent = {
           ...defaultSiteContent,
           ...(data ?? {}),
+          navigation: {
+            ...defaultSiteContent.navigation,
+            ...(data.navigation ?? {}),
+          },
           popupBanner: {
             ...defaultPopupBanner,
             ...(data.popupBanner ?? {}),
+          },
+          pricingSection: {
+            ...defaultSiteContent.pricingSection,
+            ...(data.pricingSection ?? {}),
+          },
+          packageSection: {
+            ...defaultSiteContent.packageSection,
+            ...(data.packageSection ?? {}),
+          },
+          testimonialSection: {
+            ...defaultSiteContent.testimonialSection,
+            ...(data.testimonialSection ?? {}),
+          },
+          faqSection: {
+            ...defaultSiteContent.faqSection,
+            ...(data.faqSection ?? {}),
+          },
+          ctaSection: {
+            ...defaultSiteContent.ctaSection,
+            ...(data.ctaSection ?? {}),
+          },
+          aboutSection: {
+            ...defaultSiteContent.aboutSection,
+            ...(data.aboutSection ?? {}),
           },
         }
         setContent(merged)

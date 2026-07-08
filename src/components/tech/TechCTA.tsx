@@ -1,8 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useSiteContent } from '@/lib/use-site-content';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function TechCTA() {
+  const { content } = useSiteContent();
+  const section = content.ctaSection;
+
   return (
     <section id="upgrade" className="py-20 relative overflow-hidden bg-transparent">
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10 p-8 rounded-3xl bg-black/30 backdrop-blur-md border border-white/10 shadow-2xl">
@@ -14,7 +19,7 @@ export default function TechCTA() {
           className="will-change-transform"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">
-            Siap untuk <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]">Upgrade?</span>
+            {section.title} <span className="text-perkasa-red drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]">{section.highlight}</span>
           </h2>
         </motion.div>
 
@@ -26,7 +31,7 @@ export default function TechCTA() {
           className="will-change-transform"
         >
           <p className="text-gray-100 text-lg mb-8 max-w-2xl mx-auto font-medium drop-shadow-md">
-            Bergabunglah dengan jaringan masa depan, tersedia hari ini. Rasakan kecepatan tanpa batas.
+            {section.description}
           </p>
         </motion.div>
 
@@ -38,12 +43,12 @@ export default function TechCTA() {
           className="will-change-transform"
         >
           <a 
-            href="https://wa.me/6281252000220?text=Halo,%20saya%20ingin%20berlangganan%20internet%20Perkasa%20Networks"
+            href={buildWhatsAppUrl(content.company.phone, section.buttonMessage)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-10 py-4 rounded-full font-bold text-lg bg-gradient-to-r from-perkasa-red to-perkasa-blue text-white shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 transition-all duration-300"
           >
-            Pasang Sekarang
+            {section.buttonLabel}
           </a>
         </motion.div>
       </div>

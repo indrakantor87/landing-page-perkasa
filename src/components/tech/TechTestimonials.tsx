@@ -7,11 +7,12 @@ import { useSiteContent } from '@/lib/use-site-content';
 
 export default function TechTestimonials() {
   const { content } = useSiteContent();
+  const section = content.testimonialSection;
   return (
     <section className="py-20 relative overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
-        <h2 className="text-3xl font-bold text-white mb-4 drop-shadow-lg shadow-black/50">Kata Mereka Tentang <span className="text-perkasa-red drop-shadow-lg shadow-black/50">Perkasa</span></h2>
-        <p className="text-white drop-shadow-md font-medium shadow-black/50">Bergabung dengan ribuan pelanggan yang telah merasakan kecepatan internet sesungguhnya.</p>
+        <h2 className="text-3xl font-bold text-white mb-4 drop-shadow-lg shadow-black/50">{section.title} <span className="text-perkasa-red drop-shadow-lg shadow-black/50">{section.highlight}</span></h2>
+        <p className="text-white drop-shadow-md font-medium shadow-black/50">{section.description}</p>
       </div>
 
       <div className="relative w-full overflow-hidden">

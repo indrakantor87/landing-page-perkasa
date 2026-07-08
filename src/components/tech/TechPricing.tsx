@@ -1,15 +1,16 @@
 'use client';
 
 import { Check } from 'lucide-react';
-import { motion } from 'framer-motion';
-import clsx from 'clsx';
 import { iconMap } from '@/data/site-config';
 import { useSiteContent } from '@/lib/use-site-content';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function TechPricing() {
   const { content } = useSiteContent();
   const activeTab = 'home'; // Force only 'home' package
   const HomeIcon = iconMap.Home;
+  const section = content.pricingSection;
+  const contactNumber = content.company.phone;
 
   return (
     <section id="pricing" className="py-24 relative overflow-hidden">
@@ -19,10 +20,10 @@ export default function TechPricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight drop-shadow-md">
-            Pilih Paket <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF3D00] to-[#FF9100] drop-shadow-[0_0_15px_rgba(255,61,0,0.5)]">Sesuai Kebutuhan</span>
+            {section.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF3D00] to-[#FF9100] drop-shadow-[0_0_15px_rgba(255,61,0,0.5)]">{section.highlight}</span>
           </h2>
           <p className="text-white text-lg max-w-2xl mx-auto font-medium drop-shadow-md">
-            Solusi internet terbaik untuk rumah, bisnis, hingga korporasi dengan kecepatan stabil dan harga terjangkau.
+            {section.description}
           </p>
         </div>
 
@@ -44,7 +45,7 @@ export default function TechPricing() {
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch justify-center">
-          {content.packages[activeTab].plans.map((plan, index) => (
+          {content.packages[activeTab].plans.map((plan) => (
             <div 
               key={plan.name}
               className={`relative flex flex-col p-8 rounded-2xl border backdrop-blur-sm transition-all duration-300 group hover:scale-105 hover:shadow-2xl ${
@@ -55,7 +56,7 @@ export default function TechPricing() {
             >
               {(plan as { popular?: boolean }).popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg shadow-red-900/50">
-                  PALING LARIS
+                  {section.popularBadge}
                 </div>
               )}
 
@@ -72,7 +73,7 @@ export default function TechPricing() {
 
               <div className="flex items-baseline gap-1 mb-8">
                 {plan.price === 'Call Us' ? (
-                   <span className="text-2xl font-bold text-white drop-shadow-md">Hubungi Kami</span>
+                   <span className="text-2xl font-bold text-white drop-shadow-md">{section.callUsLabel}</span>
                 ) : (
                   <>
                     <span className="text-sm text-white font-medium">Rp</span>
@@ -94,7 +95,7 @@ export default function TechPricing() {
               </ul>
 
               <a
-                href={`https://wa.me/6281252000220?text=Halo,%20saya%20tertarik%20dengan%20${encodeURIComponent(plan.name)}%20(${content.packages[activeTab].title})`}
+                href={buildWhatsAppUrl(contactNumber, `Halo, saya tertarik dengan ${plan.name} (${content.packages[activeTab].title})`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-full py-3 rounded-lg font-bold text-center transition-all duration-300 ${
@@ -103,7 +104,7 @@ export default function TechPricing() {
                     : 'bg-white text-black group-hover:bg-perkasa-blue group-hover:text-white hover:shadow-lg hover:shadow-blue-900/30'
                 }`}
               >
-                Pilih Paket
+                {section.ctaLabel}
               </a>
             </div>
           ))}
@@ -111,8 +112,7 @@ export default function TechPricing() {
 
         <div className="mt-16 text-center">
             <p className="text-white text-sm max-w-2xl mx-auto font-medium drop-shadow-sm">
-              *Harga sudah termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih.
-              Ketersediaan jaringan fiber optic bergantung pada lokasi.
+              {section.disclaimer}
             </p>
         </div>
       </div>

@@ -16,9 +16,37 @@ export async function readSiteContent(): Promise<SiteContent> {
     return {
       ...defaultSiteContent,
       ...parsed,
+      navigation: {
+        ...defaultSiteContent.navigation,
+        ...(parsed.navigation ?? {}),
+      },
       popupBanner: {
         ...defaultPopupBanner,
         ...(parsed.popupBanner ?? {}),
+      },
+      pricingSection: {
+        ...defaultSiteContent.pricingSection,
+        ...(parsed.pricingSection ?? {}),
+      },
+      packageSection: {
+        ...defaultSiteContent.packageSection,
+        ...(parsed.packageSection ?? {}),
+      },
+      testimonialSection: {
+        ...defaultSiteContent.testimonialSection,
+        ...(parsed.testimonialSection ?? {}),
+      },
+      faqSection: {
+        ...defaultSiteContent.faqSection,
+        ...(parsed.faqSection ?? {}),
+      },
+      ctaSection: {
+        ...defaultSiteContent.ctaSection,
+        ...(parsed.ctaSection ?? {}),
+      },
+      aboutSection: {
+        ...defaultSiteContent.aboutSection,
+        ...(parsed.aboutSection ?? {}),
       },
     }
   } catch {

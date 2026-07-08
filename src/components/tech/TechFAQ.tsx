@@ -9,15 +9,16 @@ import { useSiteContent } from '@/lib/use-site-content';
 export default function TechFAQ() {
   const { content } = useSiteContent();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const section = content.faqSection;
 
   return (
     <section id="faq" className="py-24 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg shadow-black/50">
-            Pertanyaan <span className="text-perkasa-red drop-shadow-lg shadow-black/50">Umum</span>
+            {section.title} <span className="text-perkasa-red drop-shadow-lg shadow-black/50">{section.highlight}</span>
           </h2>
-          <p className="text-white text-lg drop-shadow-md font-medium shadow-black/50">Jawaban untuk hal-hal yang sering ditanyakan</p>
+          <p className="text-white text-lg drop-shadow-md font-medium shadow-black/50">{section.description}</p>
         </div>
 
         <div className="space-y-4">

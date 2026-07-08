@@ -35,6 +35,7 @@ yarn-error.log*
 
 # runtime content (admin editor)
 /data/site-content.json
+/data/metrics.json
 /public/uploads/
 
 # vercel

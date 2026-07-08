@@ -3,8 +3,11 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useSiteContent } from '@/lib/use-site-content';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function WhatsAppButton() {
+  const { content } = useSiteContent();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -43,7 +46,7 @@ export default function WhatsAppButton() {
           </motion.div>
 
           <motion.a
-            href="https://wa.me/6281252000220"
+            href={buildWhatsAppUrl(content.company.phone)}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1 }}

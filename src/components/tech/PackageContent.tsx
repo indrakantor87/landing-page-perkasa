@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import clsx from 'clsx';
 import { Check } from 'lucide-react';
+import { useSiteContent } from '@/lib/use-site-content';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 interface Plan {
   name: string;
@@ -18,11 +18,14 @@ interface PackageContentProps {
 }
 
 export default function PackageContent({ plans, title }: PackageContentProps) {
+  const { content } = useSiteContent();
+  const section = content.packageSection;
+
   return (
     <section className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch justify-center">
-          {plans.map((plan, index) => (
+          {plans.map((plan) => (
             <div 
               key={plan.name}
               className={`relative flex flex-col p-8 rounded-2xl border backdrop-blur-sm transition-all duration-300 group hover:scale-105 hover:shadow-2xl ${
@@ -33,7 +36,7 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-perkasa-red text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg shadow-red-900/50">
-                  PALING LARIS
+                  {section.popularBadge}
                 </div>
               )}
 
@@ -50,7 +53,7 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
 
               <div className="flex items-baseline gap-1 mb-8 pb-8 border-b border-white/10">
                 {plan.price === 'Call Us' ? (
-                   <span className="text-2xl font-bold text-white drop-shadow-md">Hubungi Kami</span>
+                   <span className="text-2xl font-bold text-white drop-shadow-md">{section.callUsLabel}</span>
                 ) : (
                   <>
                     <span className="text-sm text-white font-medium">Rp</span>
@@ -70,7 +73,7 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
               </ul>
 
               <a
-                href={`https://wa.me/6281252000220?text=Halo,%20saya%20tertarik%20dengan%20${encodeURIComponent(plan.name)}%20(${title})`}
+                href={buildWhatsAppUrl(content.company.phone, `Halo, saya tertarik dengan ${plan.name} (${title})`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-full py-3 rounded-lg font-bold text-center transition-all duration-300 ${
@@ -79,7 +82,7 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
                     : 'bg-white text-black group-hover:bg-perkasa-blue group-hover:text-white hover:shadow-lg hover:shadow-blue-900/30'
                 }`}
               >
-                Pilih Paket
+                {section.ctaLabel}
               </a>
             </div>
           ))}
@@ -87,8 +90,7 @@ export default function PackageContent({ plans, title }: PackageContentProps) {
 
         <div className="mt-12 text-center">
             <p className="text-white text-sm max-w-2xl mx-auto font-medium drop-shadow-sm">
-              *Harga sudah termasuk PPN 11%. Syarat dan ketentuan berlaku. Kecepatan up to (hingga) sesuai paket yang dipilih.
-              Ketersediaan jaringan fiber optic bergantung pada lokasi.
+              {section.disclaimer}
             </p>
         </div>
       </div>
